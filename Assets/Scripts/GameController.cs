@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour {
 
-    public List<GameObject> levelSegments;
-    private int currentSegment = 0;
-
 	// Use this for initialization
 	void Start () {
 		
@@ -16,14 +13,4 @@ public class GameController : MonoBehaviour {
 	void Update () {
 		
 	}
-
-    public GameObject GetNextSegment() {
-        if (currentSegment != levelSegments.Count - 1) {
-            currentSegment++;
-        } else {
-            currentSegment = 0;
-        }
-
-        return levelSegments[currentSegment];
-    }
 }

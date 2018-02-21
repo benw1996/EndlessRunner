@@ -36,6 +36,7 @@ public class LevelComponent : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D col) {
         if(col.tag == "Player") {
+            nextSegmentName = PoolManager.current.GetNames()[Random.Range(0, 7)];
             DisplayNextSegment();
         }
     }

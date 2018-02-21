@@ -158,7 +158,7 @@ MonoBehaviour:
   - {fileID: 1255951406423284, guid: 80658bf96698c404394537a641851ca2, type: 2}
   - {fileID: 1889819689353582, guid: 0ca1f081a8f22254ba45344ea0e5c10e, type: 2}
   - {fileID: 1012368915214598, guid: 72195304e07e74f43ba39bb910f9fbaa, type: 2}
-  poolAmounts: 0300000003000000030000000300000003000000030000000300000003000000
+  poolAmounts: 0600000006000000060000000600000006000000060000000600000006000000
 --- !u!4 &96266519
 Transform:
   m_ObjectHideFlags: 0
@@ -376,15 +376,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5d482bb019a28e43b133daa0ea3d44a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelSegments:
-  - {fileID: 1732985830650160, guid: d961a8f0bb825ee46acb6d6ed9ab1c58, type: 2}
-  - {fileID: 1705030644311652, guid: 118977e3cc3b8b44d8ac48226fd6bff8, type: 2}
-  - {fileID: 1361999849354458, guid: 50f889e805ea124428fb7369fc9938a4, type: 2}
-  - {fileID: 1474862051979292, guid: 19a7082437976464897a2663e686cbfc, type: 2}
-  - {fileID: 1570020024910916, guid: 08ed3deb87b4ee64aa3cfdd5f697d44a, type: 2}
-  - {fileID: 1255951406423284, guid: 80658bf96698c404394537a641851ca2, type: 2}
-  - {fileID: 1889819689353582, guid: 0ca1f081a8f22254ba45344ea0e5c10e, type: 2}
-  - {fileID: 1012368915214598, guid: 72195304e07e74f43ba39bb910f9fbaa, type: 2}
 --- !u!4 &1583279558
 Transform:
   m_ObjectHideFlags: 0
