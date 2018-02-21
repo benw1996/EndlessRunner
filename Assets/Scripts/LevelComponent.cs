@@ -8,6 +8,8 @@ public class LevelComponent : MonoBehaviour {
     private Transform destroyPosition;
 
     public float speed = 5.0f;
+    public string nextSegmentName = "";
+    private int currentSegment = 0;
 
     private GameController gameController;
     private Rigidbody2D m_rigidBody;
@@ -18,17 +20,17 @@ public class LevelComponent : MonoBehaviour {
         destroyPosition = gameObject.transform.GetChild(1);
 
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
-
-        m_rigidBody = GetComponent<Rigidbody2D>();
-        m_rigidBody.velocity = Vector2.left * speed;
-
-        //DisplayNextSegment();
 	}
 	
+    void OnEnable() {
+        m_rigidBody = GetComponent<Rigidbody2D>();
+        m_rigidBody.velocity = Vector2.left * speed;
+    }
+
 	// Update is called once per frame
 	void Update () {
         if(!IsVisibleToCamera(destroyPosition)) {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
 	}
 
@@ -39,15 +41,21 @@ public class LevelComponent : MonoBehaviour {
     }
 
     /// <summary>
-    /// Method for creating the next level component.
+    /// Method for displaying the next level component.
     /// </summary>
     void DisplayNextSegment() {
-        GameObject nextSegment = gameController.GetNextSegment();
-
-        Instantiate(nextSegment, nextPosition.position, nextPosition.rotation);
+        if(nextSegmentName != "") {
+            GameObject obj = PoolManager.current.GetPooledObject(nextSegmentName);
+            
+            if(obj != null) {
+                obj.transform.position = nextPosition.position;
+                obj.transform.rotation = nextPosition.rotation;
+                obj.SetActive(true);
+            }
+        }
     }
 
-    public static bool IsVisibleToCamera(Transform transform) {
+    bool IsVisibleToCamera(Transform transform) {
         Vector3 visTest = Camera.main.WorldToViewportPoint(transform.position);
         return (visTest.x >= 0 && visTest.y >= 0) && (visTest.x <= 1 && visTest.y <= 1) && visTest.z >= 0;
     }
