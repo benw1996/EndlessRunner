@@ -159,6 +159,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   nextSegmentName: G
+  nextSegements:
+  - H
+  - G
+  - C
 --- !u!212 &212889908179348236
 SpriteRenderer:
   m_ObjectHideFlags: 1

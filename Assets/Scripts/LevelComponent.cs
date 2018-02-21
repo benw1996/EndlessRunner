@@ -9,7 +9,7 @@ public class LevelComponent : MonoBehaviour {
 
     public float speed = 5.0f;
     public string nextSegmentName = "";
-    private int currentSegment = 0;
+    public string[] nextSegements;
 
     private GameController gameController;
     private Rigidbody2D m_rigidBody;
@@ -36,7 +36,7 @@ public class LevelComponent : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D col) {
         if(col.tag == "Player") {
-            nextSegmentName = PoolManager.current.GetNames()[Random.Range(0, 7)];
+            nextSegmentName = ChooseNextSegment();
             DisplayNextSegment();
         }
     }
@@ -54,6 +54,16 @@ public class LevelComponent : MonoBehaviour {
                 obj.SetActive(true);
             }
         }
+    }
+
+    string ChooseNextSegment() {
+        int limit = nextSegements.Length;
+        int index = Random.Range(0, limit);
+
+        string name = nextSegements[index];
+        Debug.Log(name);
+
+        return name;
     }
 
     bool IsVisibleToCamera(Transform transform) {
