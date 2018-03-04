@@ -7,37 +7,52 @@ public class LevelComponent : MonoBehaviour {
     private Transform nextPosition;
     private Transform destroyPosition;
 
+    public GameObject segment;
+
     public float speed = 5.0f;
     public string nextSegmentName = "";
     public string[] nextSegements;
 
     private GameController gameController;
     private Rigidbody2D m_rigidBody;
+    private PlayerController player;
 
 	// Use this for initialization
 	void Start () {
         nextPosition = gameObject.transform.GetChild(0);
         destroyPosition = gameObject.transform.GetChild(1);
 
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
 	}
 	
     void OnEnable() {
         m_rigidBody = GetComponent<Rigidbody2D>();
-        m_rigidBody.velocity = Vector2.left * speed;
+        //m_rigidBody.velocity = Vector2.left * speed;
     }
 
 	// Update is called once per frame
 	void Update () {
-        if(!IsVisibleToCamera(destroyPosition)) {
-            gameObject.SetActive(false);
+        //if(!IsVisibleToCamera(destroyPosition)) {
+        //gameObject.SetActive(false);
+        //}
+
+        if ( !player.IsGrounded() ) {
+            m_rigidBody.velocity = (Vector2.up) * speed;
+        } else {
+            m_rigidBody.velocity = Vector2.left * speed;
         }
 	}
 
     void OnTriggerEnter2D(Collider2D col) {
         if(col.tag == "Player") {
-            nextSegmentName = ChooseNextSegment();
-            DisplayNextSegment();
+            //nextSegmentName = ChooseNextSegment();
+            //DisplayNextSegment();
+            
+
+            Instantiate(segment, nextPosition);
+            
         }
     }
 
