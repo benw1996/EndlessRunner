@@ -19,7 +19,6 @@ public class PlayerController : MonoBehaviour {
     }
 
     public bool IsGrounded() {
-        Debug.Log(m_grounded);
         return m_grounded;
     }
 }
