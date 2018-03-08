@@ -51,6 +51,18 @@ public class PoolManager : MonoBehaviour {
         return null;
     }
 
+    public List<GameObject> GetPooledObjects(string tag) {
+        tempList = mainPool[name] as List<GameObject>;
+
+        for(int i = 0; i < tempList.Count; i++) {
+            if (tempList[i].name.Split('/')[0].ToLower() != tag.ToLower()) {
+                tempList.Remove(tempList[i]);
+            }
+        }
+
+        return tempList;
+    }
+
     public string[] GetNames() {
         return names;
     }

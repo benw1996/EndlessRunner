@@ -5,6 +5,7 @@ using UnityEngine;
 public class LevelComponent : MonoBehaviour {
 
     public float speed = 5.0f;
+    private Vector2 m_velocity = Vector2.left;
     public string nextSegmentName = "";
     public string[] nextSegements;
 
@@ -22,7 +23,7 @@ public class LevelComponent : MonoBehaviour {
 	
     void OnEnable() {
         m_rigidBody = GetComponent<Rigidbody2D>();
-        //m_rigidBody.velocity = Vector2.left * speed;
+        m_rigidBody.velocity = m_velocity * speed;
     }
     void OnBecameInvisible() {
         gameObject.SetActive(false);
@@ -36,4 +37,10 @@ public class LevelComponent : MonoBehaviour {
             m_rigidBody.velocity = Vector2.left * speed;
         }
 	}
+
+    public void UpdateVelocity(Vector2 newVelocity) {
+        m_velocity = newVelocity;
+
+        m_rigidBody.velocity = m_velocity * speed;
+    }
 }
