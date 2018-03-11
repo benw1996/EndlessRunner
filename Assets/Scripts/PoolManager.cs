@@ -6,6 +6,8 @@ public class PoolManager : MonoBehaviour {
 
     public static PoolManager current;
 
+
+    public string NamingConvention = "[Type] / [Name]";
     public string[] names;
     public GameObject[] pooledObjects;
     public int[] poolAmounts;
@@ -52,11 +54,13 @@ public class PoolManager : MonoBehaviour {
     }
 
     public List<GameObject> GetPooledObjects(string tag) {
-        tempList = mainPool[name] as List<GameObject>;
+        tempList = new List<GameObject>();
 
-        for(int i = 0; i < tempList.Count; i++) {
-            if (tempList[i].name.Split('/')[0].ToLower() != tag.ToLower()) {
-                tempList.Remove(tempList[i]);
+        foreach(KeyValuePair<string, List<GameObject>> poolObject in mainPool) {
+            string key = poolObject.Key.Split('/')[0].ToLower();
+
+            if(key == tag) {
+                tempList.AddRange(poolObject.Value);
             }
         }
 

@@ -31,11 +31,11 @@ public class LevelComponent : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        if ( !player.IsGrounded() ) {
-            m_rigidBody.velocity = (Vector2.up) * speed;
-        } else {
-            m_rigidBody.velocity = Vector2.left * speed;
-        }
+        //if ( !player.IsGrounded() ) {
+        //    m_rigidBody.velocity = (Vector2.up) * speed;
+        //} else {
+        //    m_rigidBody.velocity = Vector2.left * speed;
+        //}
 	}
 
     public void UpdateVelocity(Vector2 newVelocity) {

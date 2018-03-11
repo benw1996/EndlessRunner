@@ -6,7 +6,6 @@ public class LevelController : MonoBehaviour {
 
     public static LevelController current;
 
-    private float speed = 5.0f;
     private Vector2 m_Velocity;
 
     private List<GameObject> levelSegments;
@@ -23,7 +22,7 @@ public class LevelController : MonoBehaviour {
 
         levelSegments = PoolManager.current.GetPooledObjects("level");
 
-        m_Velocity = Vector2.left * speed;
+        m_Velocity = Vector2.left;
 	}
 	
 	// Update is called once per frame
