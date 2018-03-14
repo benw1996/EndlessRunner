@@ -432,7 +432,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 1
+  m_Constraints: 5
 --- !u!4 &1263459666
 Transform:
   m_ObjectHideFlags: 0
@@ -462,6 +462,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundCheck: {fileID: 968021560}
   m_jumpForce: 1000
+  m_rotationSpeed: 100
 --- !u!61 &1263459668
 BoxCollider2D:
   m_ObjectHideFlags: 0
