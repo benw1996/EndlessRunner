@@ -200,7 +200,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1149781993976446}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.44, y: -0.45, z: 0}
+  m_LocalPosition: {x: -0.51, y: -0.68, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
   - {fileID: 4030077182775166}
@@ -393,7 +393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  nextSegmentName: 
+  nextSegmentName: Level/Ramp
   nextSegements: []
 --- !u!114 &114625801487253054
 MonoBehaviour:
@@ -432,7 +432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b63a95224f81aff4888517eeb0c27873, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSegmentName: Ramp
+  nextSegmentName: Level/Ramp
   nextSegements: []
 --- !u!212 &212626984176914216
 SpriteRenderer:
