@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 212626984176914216}
   - component: {fileID: 114068921773639580}
   - component: {fileID: 50861597673635198}
-  - component: {fileID: 60300300526463250}
+  - component: {fileID: 60800783654287066}
   m_Layer: 8
   m_Name: LevelSegment
   m_TagString: Untagged
@@ -148,7 +148,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1459181165091488}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.86, y: -3.24, z: 0}
+  m_LocalPosition: {x: 3.8336, y: -3.1972, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4488241929987868}
@@ -272,7 +272,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!60 &60300300526463250
+--- !u!60 &60800783654287066
 PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -286,26 +286,26 @@ PolygonCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0.03, y: 0.049999997, z: 0.04, w: 0.049999997}
+    border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 1}
-    oldSize: {x: 3.9, y: 3.3}
-    newSize: {x: 3.3, y: 3.3}
+    oldSize: {x: 3.84, y: 3.2}
+    newSize: {x: 3.84, y: 3.2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.68, y: -0.03}
-      - {x: 0.03, y: -0.03}
-      - {x: 0.01, y: -0.049999997}
-      - {x: 0.01, y: -1.3299999}
-      - {x: 0.03, y: -1.35}
-      - {x: 1.29, y: -3.25}
-      - {x: 1.31, y: -3.27}
-      - {x: 3.87, y: -3.27}
-      - {x: 3.8899999, y: -3.25}
-      - {x: 3.8899999, y: -3.23}
+    - - {x: 0.6468008, y: 0.02533203}
+      - {x: -0.0031991575, y: 0.02533203}
+      - {x: -0.023199158, y: 0.0053320313}
+      - {x: -0.023199158, y: -1.274668}
+      - {x: -0.0031991575, y: -1.294668}
+      - {x: 1.2568008, y: -3.1946678}
+      - {x: 1.2768009, y: -3.2146678}
+      - {x: 3.8368008, y: -3.2146678}
+      - {x: 3.8568008, y: -3.1946678}
+      - {x: 3.8568008, y: -3.1746678}
 --- !u!61 &61197537830965992
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -473,7 +473,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 3.3, y: 3.3}
+  m_Size: {x: 3.84, y: 3.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

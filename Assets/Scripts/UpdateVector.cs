@@ -19,8 +19,8 @@ public class UpdateVector : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D col) {
         if (col.tag == "Player") {
-            Debug.Log("This Works");
-            LevelController.current.UpdateVelocity(m_pos1, m_pos2);
+            //Debug.Log("This Works");
+            //LevelController.current.UpdateVelocity(m_pos1, m_pos2);
         }
     }
 }
