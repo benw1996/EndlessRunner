@@ -143,9 +143,11 @@ MonoBehaviour:
   NamingConvention: '[Type] / [Name]'
   names:
   - Level/Ramp
+  - Level/Flatground
   pooledObjects:
   - {fileID: 1149781993976446, guid: 69bea17485eb9d348b7c504d2c5c25e7, type: 2}
-  poolAmounts: 03000000
+  - {fileID: 1018283358151906, guid: 4999cff5cca880143ac743bc02632213, type: 2}
+  poolAmounts: 0300000003000000
 --- !u!4 &96266519
 Transform:
   m_ObjectHideFlags: 0
@@ -432,7 +434,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 5
+  m_Constraints: 1
 --- !u!4 &1263459666
 Transform:
   m_ObjectHideFlags: 0
@@ -475,7 +477,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.15}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -486,7 +488,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.61, y: 1}
+  m_Size: {x: 0.61, y: 1.26}
   m_EdgeRadius: 0
 --- !u!1 &1583279556
 GameObject:
@@ -571,45 +573,9 @@ Prefab:
       propertyPath: m_Name
       value: Level/Ramp
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 60800783654287066, guid: 69bea17485eb9d348b7c504d2c5c25e7, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 69bea17485eb9d348b7c504d2c5c25e7, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1938139888 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1149781993976446, guid: 69bea17485eb9d348b7c504d2c5c25e7,
-    type: 2}
-  m_PrefabInternal: {fileID: 1789451142}
---- !u!60 &1938139889
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1938139888}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 1}
-    oldSize: {x: 3.84, y: 3.2}
-    newSize: {x: 3.84, y: 3.2}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0, y: 0}
-      - {x: 0, y: -1.31}
-      - {x: 1.26, y: -3.1999998}
-      - {x: 3.84, y: -3.1999998}
-      - {x: 3.84, y: -3.1599998}
-      - {x: 0.66999996, y: 0}
 --- !u!1 &2092185751
 GameObject:
   m_ObjectHideFlags: 0

@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 212626984176914216}
   - component: {fileID: 114068921773639580}
   - component: {fileID: 50861597673635198}
-  - component: {fileID: 60800783654287066}
+  - component: {fileID: 60352709696164716}
   m_Layer: 8
   m_Name: LevelSegment
   m_TagString: Untagged
@@ -272,7 +272,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!60 &60800783654287066
+--- !u!60 &60352709696164716
 PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -296,16 +296,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.6468008, y: 0.02533203}
-      - {x: -0.0031991575, y: 0.02533203}
-      - {x: -0.023199158, y: 0.0053320313}
-      - {x: -0.023199158, y: -1.274668}
-      - {x: -0.0031991575, y: -1.294668}
-      - {x: 1.2568008, y: -3.1946678}
-      - {x: 1.2768009, y: -3.2146678}
-      - {x: 3.8368008, y: -3.2146678}
-      - {x: 3.8568008, y: -3.1946678}
-      - {x: 3.8568008, y: -3.1746678}
+    - - {x: 0, y: 0}
+      - {x: 0, y: -1.31}
+      - {x: 1.26, y: -3.1999998}
+      - {x: 3.84, y: -3.1999998}
+      - {x: 3.8373888, y: -3.192642}
+      - {x: 0.639699, y: -0.0012120605}
 --- !u!61 &61197537830965992
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -432,7 +428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b63a95224f81aff4888517eeb0c27873, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSegmentName: Level/Ramp
+  nextSegmentName: Level/Flatground
   nextSegements: []
 --- !u!212 &212626984176914216
 SpriteRenderer:
