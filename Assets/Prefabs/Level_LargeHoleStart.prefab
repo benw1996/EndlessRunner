@@ -155,9 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 623cdf4007fc8b14ab580acb620b6ff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  nextSegmentName: 
-  nextSegements: []
+  m_speed: 5
 --- !u!114 &114623891184055410
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -169,8 +167,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b63a95224f81aff4888517eeb0c27873, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSegmentName: Level/LargeHoleEnd
-  nextSegements: []
+  nextSegmentName: Level/Closed/LargeHoleEnd
+  nextSegements:
+  - Level/Closed/LargeHoleEnd
 --- !u!212 &212777208794242790
 SpriteRenderer:
   m_ObjectHideFlags: 1

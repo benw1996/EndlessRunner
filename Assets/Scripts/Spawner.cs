@@ -52,7 +52,7 @@ public class Spawner : MonoBehaviour {
             string[] names = PoolManager.current.GetLevelCompomentNames().ToArray();
             int limit = names.Length;
             int index = Random.Range(0, limit);
-
+            
             string name = names[index];
             Debug.Log(name);
 

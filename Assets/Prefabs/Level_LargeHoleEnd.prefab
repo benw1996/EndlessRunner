@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 114387330377055824}
   - component: {fileID: 61942866438295936}
   - component: {fileID: 50397306766221990}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Level_LargeHoleEnd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,9 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 623cdf4007fc8b14ab580acb620b6ff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  nextSegmentName: 
-  nextSegements: []
+  m_speed: 5
 --- !u!114 &114922406725917532
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -169,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b63a95224f81aff4888517eeb0c27873, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSegmentName: Level/Ramp
+  nextSegmentName: 
   nextSegements: []
 --- !u!212 &212383398703711598
 SpriteRenderer:
