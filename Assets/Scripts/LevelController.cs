@@ -6,6 +6,7 @@ public class LevelController : MonoBehaviour {
 
     public static LevelController current;
 
+    public float m_speed;
     private Vector2 m_Velocity;
 
     private List<GameObject> levelSegments;
@@ -23,6 +24,8 @@ public class LevelController : MonoBehaviour {
         levelSegments = PoolManager.current.GetPooledObjects("level");
 
         m_Velocity = Vector2.left;
+
+        UpdateVelocity(m_Velocity);
 	}
 	
 	// Update is called once per frame
@@ -30,11 +33,9 @@ public class LevelController : MonoBehaviour {
 		
 	}
 
-    public void UpdateVelocity(Transform pos1, Transform pos2) {
-        m_Velocity = CalculateVelocity( CalculateAngle(pos1, pos2) );
-
+    public void UpdateVelocity(Vector2 newVelocity) {
         for(int i = 0; i < levelSegments.Count; i++) {
-            levelSegments[i].GetComponent<LevelComponent>().UpdateVelocity(m_Velocity);
+            levelSegments[i].GetComponent<LevelComponent>().UpdateVelocity(newVelocity, m_speed);
         }
     }
 

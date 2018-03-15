@@ -67,8 +67,16 @@ public class PoolManager : MonoBehaviour {
         return tempList;
     }
 
-    public string[] GetNames() {
-        return names;
+    public List<string> GetLevelCompomentNames() {
+        List<string> tempNames = new List<string>();
+
+        for(int i = 0; i < names.Length; i++) {
+            if(names[i].Split('/')[0].ToLower() == "level") {
+                tempNames.Add(names[i]);
+            }
+        }
+
+        return tempNames;
     }
 
     public void ResetPool() {
