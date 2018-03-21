@@ -40,6 +40,12 @@ public class LevelController : MonoBehaviour {
         }
     }
 
+    public void Stop() {
+        UpdateVelocity(Vector2.zero);
+        Camera.main.GetComponent<CameraSmoothFollow>().m_follow = false;
+        Debug.Log("GameOver");
+    }
+
     private float CalculateAngle(Transform pos1, Transform pos2) {
         float angle = 0f;
 

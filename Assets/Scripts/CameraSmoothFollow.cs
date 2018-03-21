@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraSmoothFollow : MonoBehaviour {
 
     public Transform m_target;
+    public bool m_follow = true;
 
 	// Use this for initialization
 	void Start () {
@@ -13,6 +14,8 @@ public class CameraSmoothFollow : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.position = new Vector3(m_target.position.x, m_target.position.y, -10);
+        if (m_follow) {
+            transform.position = new Vector3(m_target.position.x, m_target.position.y, -10);
+        }
 	}
 }
