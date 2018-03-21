@@ -8,6 +8,11 @@ public class LevelController : MonoBehaviour {
 
     public float m_speed;
     private Vector2 m_Velocity;
+    private bool m_stop = false;
+
+    private float acceleration = -3;
+    private float minSpeed = 0f;
+    private float maxSpeed = 6f;
 
     private List<GameObject> levelComponents;
 
@@ -26,22 +31,27 @@ public class LevelController : MonoBehaviour {
 
         m_Velocity = Vector2.left;
 
-        UpdateVelocity(m_Velocity);
+        UpdateVelocity();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        if (m_stop) {
+            acceleration = -3;
 
-    public void UpdateVelocity(Vector2 newVelocity) {
+            m_speed = Mathf.Clamp(m_speed + acceleration * Time.deltaTime, minSpeed, maxSpeed);
+            UpdateVelocity();
+        }
+    }
+
+    public void UpdateVelocity() {
         for(int i = 0; i < levelComponents.Count; i++) {
-            levelComponents[i].GetComponent<LevelComponent>().UpdateVelocity(newVelocity, m_speed);
+            levelComponents[i].GetComponent<LevelComponent>().UpdateVelocity(m_Velocity, m_speed);
         }
     }
 
     public void Stop() {
-        UpdateVelocity(Vector2.zero);
+        m_stop = true;
         Camera.main.GetComponent<CameraSmoothFollow>().m_follow = false;
         Debug.Log("GameOver");
     }
