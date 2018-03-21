@@ -37,8 +37,6 @@ public class LevelController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (m_stop) {
-            acceleration = -3;
-
             m_speed = Mathf.Clamp(m_speed + acceleration * Time.deltaTime, minSpeed, maxSpeed);
             UpdateVelocity();
         }
@@ -50,8 +48,14 @@ public class LevelController : MonoBehaviour {
         }
     }
 
-    public void Stop() {
-        m_stop = true;
+    public void Stop(bool fall) {
+        if (fall) {
+            acceleration = -3;
+            m_stop = true;
+        } else {
+            m_speed = 0f;
+        }
+        
         Camera.main.GetComponent<CameraSmoothFollow>().m_follow = false;
         Debug.Log("GameOver");
     }

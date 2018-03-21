@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LevelComponent : MonoBehaviour {
 
-    public float m_speed = 5.0f;
+    public float m_speed = 5f;
     private Vector2 m_velocity = Vector2.left;
 
     public Transform[] m_obstacleSpawnPoints;
@@ -55,7 +55,7 @@ public class LevelComponent : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D col) {
         if(col.tag == "Player") {
-            LevelController.current.Stop();
+            LevelController.current.Stop(true);
         }
     }
 }

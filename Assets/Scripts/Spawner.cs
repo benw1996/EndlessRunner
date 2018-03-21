@@ -54,7 +54,7 @@ public class Spawner : MonoBehaviour {
             int index = Random.Range(0, limit);
             
             string name = names[index];
-            Debug.Log(name);
+            //Debug.Log(name);
 
             return name;
         }
