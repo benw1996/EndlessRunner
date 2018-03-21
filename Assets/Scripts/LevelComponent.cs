@@ -43,8 +43,11 @@ public class LevelComponent : MonoBehaviour {
             GameObject obj = PoolManager.current.GetPooledObject("Obstacle/Medium");
 
             if(obj != null) {
-                obj.transform.position = m_obstacleSpawnPoints[0].position;
-                obj.transform.rotation = m_obstacleSpawnPoints[0].rotation;
+                int limit = m_obstacleSpawnPoints.Length;
+                int index = Random.Range(0, limit);
+
+                obj.transform.position = m_obstacleSpawnPoints[index].position;
+                obj.transform.rotation = m_obstacleSpawnPoints[index].rotation;
                 obj.SetActive(true);
             }
         }
