@@ -59,7 +59,7 @@ public class PoolManager : MonoBehaviour {
         foreach(KeyValuePair<string, List<GameObject>> poolObject in mainPool) {
             string key = poolObject.Key.Split('/')[0].ToLower();
 
-            if(key == tag) {
+            if(key == tag.ToLower()) {
                 tempList.AddRange(poolObject.Value);
             }
         }

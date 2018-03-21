@@ -9,7 +9,7 @@ public class LevelController : MonoBehaviour {
     public float m_speed;
     private Vector2 m_Velocity;
 
-    private List<GameObject> levelSegments;
+    private List<GameObject> levelComponents;
 
     private PlayerController player;
 
@@ -21,7 +21,8 @@ public class LevelController : MonoBehaviour {
     void Start () {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
 
-        levelSegments = PoolManager.current.GetPooledObjects("level");
+        levelComponents = PoolManager.current.GetPooledObjects("level");
+        levelComponents.AddRange(PoolManager.current.GetPooledObjects("obstacle"));
 
         m_Velocity = Vector2.left;
 
@@ -34,8 +35,8 @@ public class LevelController : MonoBehaviour {
 	}
 
     public void UpdateVelocity(Vector2 newVelocity) {
-        for(int i = 0; i < levelSegments.Count; i++) {
-            levelSegments[i].GetComponent<LevelComponent>().UpdateVelocity(newVelocity, m_speed);
+        for(int i = 0; i < levelComponents.Count; i++) {
+            levelComponents[i].GetComponent<LevelComponent>().UpdateVelocity(newVelocity, m_speed);
         }
     }
 

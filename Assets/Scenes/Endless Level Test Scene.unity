@@ -146,12 +146,16 @@ MonoBehaviour:
   - Level/Open/Flatground
   - Level/Open/LargeHoleStart
   - Level/Closed/LargeHoleEnd
+  - Level/Open/SmallHole
+  - Obstacle/Medium
   pooledObjects:
   - {fileID: 1149781993976446, guid: 69bea17485eb9d348b7c504d2c5c25e7, type: 2}
   - {fileID: 1018283358151906, guid: 4999cff5cca880143ac743bc02632213, type: 2}
   - {fileID: 1675292815336530, guid: ab0002d79e729034e880fafaa852fd5f, type: 2}
   - {fileID: 1895234185409016, guid: 9b6374136c14d06468a9bbfe35559c45, type: 2}
-  poolAmounts: 03000000030000000500000005000000
+  - {fileID: 1969641105486478, guid: fa638d94c95f6f945aedb58c45787f52, type: 2}
+  - {fileID: 1357742968728524, guid: 279f5eb7962a4844590af0be22a1ea06, type: 2}
+  poolAmounts: 030000000300000005000000050000000500000003000000
 --- !u!4 &96266519
 Transform:
   m_ObjectHideFlags: 0
