@@ -1,10 +1,9 @@
 fileFormatVersion: 2
-guid: 01ffa22761954cc498213cde7bf7b9bb
-timeCreated: 1520519710
+guid: b4ab1187f0291ad499fe2338fa6ab91c
+timeCreated: 1521639114
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: LevelSegment_0
+  fileIDToRecycleName: {}
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -41,12 +40,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 9
-  spritePivot: {x: 0.00851261, y: 0.98323274}
-  spriteBorder: {x: 3, y: 5, z: 4, w: 5}
+  alignment: 7
+  spritePivot: {x: 0.5, y: 0}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -67,47 +66,10 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - buildTarget: Standalone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: LevelSegment_0
-      rect:
-        serializedVersion: 2
-        x: 3
-        y: 5
-        width: 384
-        height: 320
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    outline:
-    - - {x: -64, y: 98}
-      - {x: -128, y: 162}
-      - {x: -192, y: 162}
-      - {x: -194, y: 160}
-      - {x: -194, y: 32}
-      - {x: -192, y: 30}
-      - {x: -66, y: 30}
-      - {x: -66, y: -160}
-      - {x: -64, y: -162}
-      - {x: 192, y: -162}
-      - {x: 194, y: -160}
-      - {x: 194, y: -159}
-      - {x: -63, y: 98}
+    sprites: []
+    outline: []
     physicsShape: []
   spritePackingTag: 
   userData: 

@@ -59,7 +59,7 @@ public class PoolManager : MonoBehaviour {
         foreach(KeyValuePair<string, List<GameObject>> poolObject in mainPool) {
             string key = poolObject.Key.Split('/')[0].ToLower();
 
-            if(key == tag) {
+            if(key == tag.ToLower()) {
                 tempList.AddRange(poolObject.Value);
             }
         }
@@ -67,8 +67,16 @@ public class PoolManager : MonoBehaviour {
         return tempList;
     }
 
-    public string[] GetNames() {
-        return names;
+    public List<string> GetLevelCompomentNames() {
+        List<string> tempNames = new List<string>();
+
+        for(int i = 0; i < names.Length; i++) {
+            if(names[i].Split('/')[0].ToLower() == "level" && names[i].Split('/')[1].ToLower() == "open") {
+                tempNames.Add(names[i]);
+            }
+        }
+
+        return tempNames;
     }
 
     public void ResetPool() {

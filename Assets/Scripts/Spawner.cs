@@ -19,7 +19,7 @@ public class Spawner : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D col) {
         if (col.tag == "Player") {
-            //nextSegmentName = ChooseNextSegment();
+            nextSegmentName = ChooseNextSegment();
             DisplayNextSegment();
         }
     }
@@ -40,12 +40,23 @@ public class Spawner : MonoBehaviour {
     }
 
     string ChooseNextSegment() {
-        int limit = nextSegements.Length;
-        int index = Random.Range(0, limit);
+        if (nextSegements.Length > 0) {
+            int limit = nextSegements.Length;
+            int index = Random.Range(0, limit);
 
-        string name = nextSegements[index];
-        Debug.Log(name);
+            string name = nextSegements[index];
+            //Debug.Log(name);
 
-        return name;
+            return name;
+        } else {
+            string[] names = PoolManager.current.GetLevelCompomentNames().ToArray();
+            int limit = names.Length;
+            int index = Random.Range(0, limit);
+            
+            string name = names[index];
+            //Debug.Log(name);
+
+            return name;
+        }
     }
 }

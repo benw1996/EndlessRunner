@@ -6,9 +6,15 @@ public class LevelController : MonoBehaviour {
 
     public static LevelController current;
 
+    public float m_speed;
     private Vector2 m_Velocity;
+    private bool m_stop = false;
 
-    private List<GameObject> levelSegments;
+    private float acceleration = -3;
+    private float minSpeed = 0f;
+    private float maxSpeed = 6f;
+
+    private List<GameObject> levelComponents;
 
     private PlayerController player;
 
@@ -20,22 +26,38 @@ public class LevelController : MonoBehaviour {
     void Start () {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
 
-        levelSegments = PoolManager.current.GetPooledObjects("level");
+        levelComponents = PoolManager.current.GetPooledObjects("level");
+        levelComponents.AddRange(PoolManager.current.GetPooledObjects("obstacle"));
 
         m_Velocity = Vector2.left;
+
+        UpdateVelocity();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
-
-    public void UpdateVelocity(Transform pos1, Transform pos2) {
-        m_Velocity = CalculateVelocity( CalculateAngle(pos1, pos2) );
-
-        for(int i = 0; i < levelSegments.Count; i++) {
-            levelSegments[i].GetComponent<LevelComponent>().UpdateVelocity(m_Velocity);
+        if (m_stop) {
+            m_speed = Mathf.Clamp(m_speed + acceleration * Time.deltaTime, minSpeed, maxSpeed);
+            UpdateVelocity();
         }
+    }
+
+    public void UpdateVelocity() {
+        for(int i = 0; i < levelComponents.Count; i++) {
+            levelComponents[i].GetComponent<LevelComponent>().UpdateVelocity(m_Velocity, m_speed);
+        }
+    }
+
+    public void Stop(bool fall) {
+        if (fall) {
+            acceleration = -3;
+            m_stop = true;
+        } else {
+            m_speed = 0f;
+        }
+        
+        Camera.main.GetComponent<CameraSmoothFollow>().m_follow = false;
+        Debug.Log("GameOver");
     }
 
     private float CalculateAngle(Transform pos1, Transform pos2) {
