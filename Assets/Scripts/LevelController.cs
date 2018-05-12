@@ -15,6 +15,7 @@ public class LevelController : MonoBehaviour {
     private float maxSpeed = 6f;
 
     private List<GameObject> levelComponents;
+    public GameObject m_start;
 
     private PlayerController player;
 
@@ -28,10 +29,6 @@ public class LevelController : MonoBehaviour {
 
         levelComponents = PoolManager.current.GetPooledObjects("level");
         levelComponents.AddRange(PoolManager.current.GetPooledObjects("obstacle"));
-
-        m_Velocity = Vector2.left;
-
-        UpdateVelocity();
 	}
 	
 	// Update is called once per frame
@@ -40,6 +37,15 @@ public class LevelController : MonoBehaviour {
             m_speed = Mathf.Clamp(m_speed + acceleration * Time.deltaTime, minSpeed, maxSpeed);
             UpdateVelocity();
         }
+    }
+
+    public void StartGame() {
+        m_Velocity = Vector2.left;
+
+        UpdateVelocity();
+
+        m_start.GetComponent<LevelComponent>().m_speed = 5.0f;
+        m_start.GetComponent<LevelComponent>().ForceStart();
     }
 
     public void UpdateVelocity() {

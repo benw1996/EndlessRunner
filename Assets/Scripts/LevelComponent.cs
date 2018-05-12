@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LevelComponent : MonoBehaviour {
 
-    public float m_speed = 5f;
+    public float m_speed = 0f;
     private Vector2 m_velocity = Vector2.left;
 
     public Transform[] m_obstacleSpawnPoints;
@@ -23,6 +23,10 @@ public class LevelComponent : MonoBehaviour {
         m_rigidBody.velocity = m_velocity * m_speed;
 
         SpawnObstacles();
+    }
+
+    public void ForceStart() {
+        m_rigidBody.velocity = m_velocity * m_speed;
     }
     void OnBecameInvisible() {
         gameObject.SetActive(false);

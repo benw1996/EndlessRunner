@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour {
 
+    private float score = 0;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -11,6 +13,8 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        if (Input.GetKeyDown("return") ){
+            LevelController.current.StartGame();
+        }
 	}
 }
