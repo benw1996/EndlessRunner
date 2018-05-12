@@ -41,6 +41,13 @@ public class PlayerController : MonoBehaviour {
                 //LevelController.current.Stop(false);
             }
         }
+
+        ContactPoint2D contact = col.contacts[0];
+        Vector2 colision = contact.normal;
+
+        if(Vector2.Dot(colision, transform.up) < 0.75) {
+            LevelController.current.Stop(true);
+        } 
     }
 
     private HitDirection ReturnDirection(Collision2D col) {
