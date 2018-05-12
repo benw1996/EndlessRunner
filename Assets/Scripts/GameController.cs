@@ -4,10 +4,19 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour {
 
-    private float score = 0;
+    public static GameController current;
 
-	// Use this for initialization
-	void Start () {
+    private float score = 0;
+    public float scoreMultiplyer = 7;
+
+    private bool playing = false;
+
+    void Awake() {
+        current = this;
+    }
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -15,6 +24,18 @@ public class GameController : MonoBehaviour {
 	void Update () {
         if (Input.GetKeyDown("return") ){
             LevelController.current.StartGame();
+            playing = true;
         }
 	}
+
+    void FixedUpdate() {
+        if (playing) {
+            score += (Time.deltaTime * scoreMultiplyer);
+            Debug.Log(score);
+        }
+    }
+
+    public void UpdateGameState(bool newState) {
+        playing = newState;
+    }
 }

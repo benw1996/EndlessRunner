@@ -64,6 +64,7 @@ public class LevelController : MonoBehaviour {
         }
         
         Camera.main.GetComponent<CameraSmoothFollow>().m_follow = false;
+        GameController.current.UpdateGameState(false);
         Debug.Log("GameOver");
     }
 

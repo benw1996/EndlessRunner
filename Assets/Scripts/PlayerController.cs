@@ -47,8 +47,9 @@ public class PlayerController : MonoBehaviour {
 
         Debug.Log(Vector2.Dot(colision, transform.up));
 
-        if(Vector2.Dot(colision, transform.up) < 0.75) {
+        if(Vector2.Dot(colision, transform.up) < 0.7) {
             LevelController.current.Stop(true);
+            m_rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
         } 
     }
 
