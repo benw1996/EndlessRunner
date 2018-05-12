@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D col) {
         if (col.gameObject.tag == "Obstacle") {
             if(ReturnDirection(col) == HitDirection.Left) {
-                LevelController.current.Stop(false);
+                //LevelController.current.Stop(false);
             }
         }
     }

@@ -53,7 +53,8 @@ public class LevelController : MonoBehaviour {
             acceleration = -3;
             m_stop = true;
         } else {
-            m_speed = 0f;
+            acceleration = -100;
+            m_stop = true;
         }
         
         Camera.main.GetComponent<CameraSmoothFollow>().m_follow = false;

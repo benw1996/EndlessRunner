@@ -11,6 +11,8 @@ public class LevelComponent : MonoBehaviour {
 
     private Rigidbody2D m_rigidBody;
 
+    public bool isObstacle = false;
+
 	// Use this for initialization
 	void Start () {
 
@@ -55,7 +57,7 @@ public class LevelComponent : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D col) {
         if(col.tag == "Player") {
-            LevelController.current.Stop(true);
+            LevelController.current.Stop(!isObstacle);
         }
     }
 }
