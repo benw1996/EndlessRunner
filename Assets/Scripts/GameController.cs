@@ -25,6 +25,7 @@ public class GameController : MonoBehaviour {
         if (Input.GetKeyDown("return") ){
             LevelController.current.StartGame();
             playing = true;
+            UpdateScrolling(true);
         }
 	}
 
@@ -36,5 +37,15 @@ public class GameController : MonoBehaviour {
 
     public void UpdateGameState(bool newState) {
         playing = newState;
+        UpdateScrolling(newState);
+    }
+
+    public void UpdateScrolling(bool scroll) {
+        GameObject[] backgroundObjs;
+        backgroundObjs = GameObject.FindGameObjectsWithTag("Background");
+
+        for(int i = 0; i < backgroundObjs.Length; i++) {
+            backgroundObjs[i].SendMessage("UpdateScrolling", scroll);
+        }
     }
 }
