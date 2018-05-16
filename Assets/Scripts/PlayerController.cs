@@ -22,13 +22,14 @@ public class PlayerController : MonoBehaviour {
 	void Update () {
 		m_grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
 
-        float h = Input.GetAxis("Horizontal");
-
-        transform.Rotate(0, 0, -h * Time.deltaTime * m_rotationSpeed);
-
         if ( Input.GetButtonDown("Jump") && m_grounded) {
             m_rigidbody.AddForce(new Vector2(0f, m_jumpForce));
         }
+
+        float h = Input.GetAxis("Horizontal");
+
+        if (!m_grounded)
+            transform.Rotate(0, 0, -h * Time.deltaTime * m_rotationSpeed);
     }
 
     public bool IsGrounded() {
@@ -36,11 +37,11 @@ public class PlayerController : MonoBehaviour {
     }
 
     void OnCollisionEnter2D(Collision2D col) {
-        if (col.gameObject.tag == "Obstacle") {
-            if(ReturnDirection(col) == HitDirection.Left) {
-                //LevelController.current.Stop(false);
-            }
-        }
+        //if (col.gameObject.tag == "Obstacle") {
+        //    if(ReturnDirection(col) == HitDirection.Left) {
+        //        LevelController.current.Stop(false);
+        //    }
+        //}
 
         ContactPoint2D contact = col.contacts[0];
         Vector2 colision = contact.normal;
