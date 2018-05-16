@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class LevelComponent : MonoBehaviour {
 
+    private bool hasBeenSeen = false;
+
     public float m_speed = 0f;
     private Vector2 m_velocity = Vector2.left;
 
@@ -28,8 +30,18 @@ public class LevelComponent : MonoBehaviour {
     public void ForceStart() {
         m_rigidBody.velocity = m_velocity * m_speed;
     }
+
+    void OnBecameVisible() {
+        hasBeenSeen = true;
+        Debug.Log("Hello!");
+    }
+
     void OnBecameInvisible() {
-        gameObject.SetActive(false);
+        if (hasBeenSeen) {
+            gameObject.SetActive(false);
+            hasBeenSeen = false;
+            Debug.Log("Goodbye!");
+        }
     }
 
     // Update is called once per frame

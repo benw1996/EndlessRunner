@@ -31,7 +31,6 @@ public class GameController : MonoBehaviour {
     void FixedUpdate() {
         if (playing) {
             score += (Time.deltaTime * scoreMultiplyer);
-            Debug.Log(score);
         }
     }
 

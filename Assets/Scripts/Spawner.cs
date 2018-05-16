@@ -45,16 +45,17 @@ public class Spawner : MonoBehaviour {
             int index = Random.Range(0, limit);
 
             string name = nextSegements[index];
-            //Debug.Log(name);
+            Debug.Log(name);
 
             return name;
         } else {
             string[] names = PoolManager.current.GetLevelCompomentNames().ToArray();
             int limit = names.Length;
             int index = Random.Range(0, limit);
-            
+
             string name = names[index];
-            //Debug.Log(name);
+
+            Debug.Log(name);
 
             return name;
         }
