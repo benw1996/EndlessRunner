@@ -10,6 +10,8 @@ public class Spawner : MonoBehaviour {
     public string[] nextSegements;
     private Transform spawnPoint;
 
+    private Helper helper = new Helper();
+
     // Use this for initialization
     void Start () {
 		
@@ -36,8 +38,8 @@ public class Spawner : MonoBehaviour {
             GameObject obj = PoolManager.current.GetPooledObject(nextSegmentName);
 
             if (obj != null) {
-                obj.transform.position = transform.position;
-                obj.transform.rotation = transform.rotation;
+                obj.transform.position = spawnPoint.position;
+                obj.transform.rotation = spawnPoint.rotation;
                 obj.SetActive(true);
             }
         }
@@ -46,7 +48,7 @@ public class Spawner : MonoBehaviour {
     string ChooseNextSegment() {
         if (nextSegements.Length > 0) {
             int limit = nextSegements.Length;
-            int index = Random.Range(0, limit);
+            int index = helper.RandomNumberGenerator(limit);
 
             string name = nextSegements[index];
             Debug.Log(name);
@@ -55,7 +57,7 @@ public class Spawner : MonoBehaviour {
         } else {
             string[] names = PoolManager.current.GetLevelCompomentNames().ToArray();
             int limit = names.Length;
-            int index = Random.Range(0, limit);
+            int index = helper.RandomNumberGenerator(limit);
 
             string name = names[index];
 
@@ -67,7 +69,7 @@ public class Spawner : MonoBehaviour {
 
     Transform ChooseNextSpawnPoint() {
         int limit = nextSegements.Length;
-        int index = Random.Range(0, limit);
+        int index = helper.RandomNumberGenerator(limit);
 
         Transform spawnPoint = spawnPoints[index];
         return spawnPoint;

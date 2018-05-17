@@ -14,8 +14,11 @@ public class PoolManager : MonoBehaviour {
 
     private Dictionary<string, List<GameObject>> mainPool = new Dictionary<string, List<GameObject>>();
     private List<GameObject> tempList;
+
     private List<string> levelComponentNames;
     private List<string> obstacleNames;
+
+    private Helper helper = new Helper();
 
     void Awake() {
         current = this;
@@ -38,8 +41,8 @@ public class PoolManager : MonoBehaviour {
             mainPool.Add(names[i], objList);
         }
 
-        levelComponentNames = RetrieveLevelCompomentNames("level");
-        obstacleNames = RetrieveLevelCompomentNames("obstacle");
+        levelComponentNames = helper.FilterArray(names, "level", 0);
+        obstacleNames = helper.FilterArray(names, "obstacle", 0);
 	}
 	
 	public GameObject GetPooledObject(string name) {
@@ -70,19 +73,6 @@ public class PoolManager : MonoBehaviour {
         }
 
         return tempList;
-    }
-
-    public List<string> RetrieveLevelCompomentNames(string name) {
-        List<string> tempNames = new List<string>();
-
-        for(int i = 0; i < names.Length; i++) {
-            if(names[i].Split('/')[0].ToLower() == name ) {
-                tempNames.Add(names[i]);
-                Debug.Log(names[i]);
-            }
-        }
-
-        return tempNames;
     }
 
     public List<string> GetLevelCompomentNames() {
