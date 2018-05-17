@@ -13,8 +13,9 @@ public class Spawner : MonoBehaviour {
     private Helper helper = new Helper();
 
     // Use this for initialization
-    void Start () {
-        nextSegments = PoolManager.current.GetLevelCompomentNames();
+    void Start() {
+        if (nextSegments.Count == 0)
+            nextSegments.AddRange(PoolManager.current.GetLevelCompomentNames());
         Debug.Log(nextSegments.Count);
     }
 	

@@ -214,7 +214,10 @@ MonoBehaviour:
   spawnPoints:
   - {fileID: 4772139999756406}
   nextSegmentName: 
-  nextSegements: []
+  nextSegments:
+  - Level/Low/Flatground1
+  - Level/Low/Flatground2
+  - Level/Low/Flatground3
 --- !u!212 &212516645844072926
 SpriteRenderer:
   m_ObjectHideFlags: 1
