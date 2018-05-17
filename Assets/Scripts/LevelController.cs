@@ -52,6 +52,9 @@ public class LevelController : MonoBehaviour {
         for(int i = 0; i < levelComponents.Count; i++) {
             levelComponents[i].GetComponent<LevelComponent>().UpdateVelocity(m_Velocity, m_speed);
         }
+
+        m_start.GetComponent<LevelComponent>().m_speed = m_speed;
+        m_start.GetComponent<LevelComponent>().ForceStart();
     }
 
     public void Stop(bool fall) {
