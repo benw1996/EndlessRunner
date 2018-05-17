@@ -8,6 +8,7 @@ public class Spawner : MonoBehaviour {
 
     public string nextSegmentName = "";
     public string[] nextSegements;
+    private Transform spawnPoint;
 
     // Use this for initialization
     void Start () {
@@ -22,6 +23,7 @@ public class Spawner : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D col) {
         if (col.tag == "Player") {
             nextSegmentName = ChooseNextSegment();
+            spawnPoint = ChooseNextSpawnPoint();
             DisplayNextSegment();
         }
     }
@@ -61,5 +63,13 @@ public class Spawner : MonoBehaviour {
 
             return name;
         }
+    }
+
+    Transform ChooseNextSpawnPoint() {
+        int limit = nextSegements.Length;
+        int index = Random.Range(0, limit);
+
+        Transform spawnPoint = spawnPoints[index];
+        return spawnPoint;
     }
 }
