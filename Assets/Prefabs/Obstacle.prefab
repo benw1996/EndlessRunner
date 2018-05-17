@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 623cdf4007fc8b14ab580acb620b6ff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_speed: 5
+  m_speed: 0
   m_obstacleSpawnPoints: []
   isObstacle: 1
 --- !u!212 &212593893945138930

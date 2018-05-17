@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour {
 
+    public Transform[] spawnPoints;
+
     public string nextSegmentName = "";
     public string[] nextSegements;
 

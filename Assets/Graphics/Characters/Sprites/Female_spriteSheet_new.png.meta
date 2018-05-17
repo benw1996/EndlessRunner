@@ -1,0 +1,649 @@
+fileFormatVersion: 2
+guid: 5121ee68a10914e42bd6c050b9022c0c
+TextureImporter:
+  fileIDToRecycleName: {}
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: iPhone
+    maxTextureSize: 1024
+    textureFormat: -2
+    compressionQuality: 50
+    allowsAlphaSplitting: 0
+  spriteSheet:
+    sprites:
+    - name: Female_spriteSheet_new_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 700
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_1
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 700
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 630
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_3
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 630
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_4
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 630
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 560
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_6
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 560
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_7
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 560
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_8
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 560
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_9
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 560
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_10
+      rect:
+        serializedVersion: 2
+        x: 650
+        y: 560
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 490
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_12
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 490
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_13
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 490
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 420
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_17
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 420
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_18
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 420
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_19
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 420
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_23
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 350
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_24
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 350
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_25
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 350
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_26
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 350
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_27
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 350
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_28
+      rect:
+        serializedVersion: 2
+        x: 650
+        y: 350
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_29
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 350
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 280
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_31
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 280
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_32
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 280
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_33
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 280
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_34
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 280
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_35
+      rect:
+        serializedVersion: 2
+        x: 650
+        y: 280
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_36
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 280
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_37
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 210
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_38
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 210
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_39
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 210
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_40
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 210
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_41
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 210
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_42
+      rect:
+        serializedVersion: 2
+        x: 650
+        y: 210
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_43
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 210
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_44
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 140
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_45
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 140
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_46
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 140
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_47
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 140
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_48
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 140
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_49
+      rect:
+        serializedVersion: 2
+        x: 650
+        y: 140
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_50
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 70
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_51
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 70
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_52
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 70
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_53
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 70
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_54
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 70
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_55
+      rect:
+        serializedVersion: 2
+        x: 650
+        y: 70
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_56
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 70
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_57
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_58
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 0
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_59
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 0
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_60
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 0
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_61
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 0
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_62
+      rect:
+        serializedVersion: 2
+        x: 650
+        y: 0
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Female_spriteSheet_new_63
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 0
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
