@@ -19,11 +19,11 @@ public class Helper {
         return index;
     }
 
-    //Public function for filtering an array for a given tag and where in the string to search for the tag.
-    public List<string> FilterArray(string[] array, string tag, int index) {
+    //Public function for filtering an List for a given tag and where in the string to search for the tag.
+    public List<string> FilterArray(List<string> array, string tag, int index) {
         List<string> tempList = new List<string>();
 
-        for (int i = 0; i < array.Length; i++) {
+        for (int i = 0; i < array.Count; i++) {
             if (array[i].Split('/')[index].ToLower() == tag) {
                 tempList.Add(array[i]);
                 //Debug.Log(array[i]);
@@ -31,5 +31,14 @@ public class Helper {
         }
 
         return tempList;
+    }
+
+    //Public function for moving an item of a list to the end once it has been used
+    public List<string> ShuffleList(List<string> listToShuffle, string item) {
+       
+        listToShuffle.Remove(item);
+        listToShuffle.Add(item);
+
+        return listToShuffle;
     }
 }

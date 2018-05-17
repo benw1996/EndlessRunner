@@ -7,15 +7,16 @@ public class Spawner : MonoBehaviour {
     public Transform[] spawnPoints;
 
     public string nextSegmentName = "";
-    public string[] nextSegements;
+    public List<string> nextSegments = new List<string>();
     private Transform spawnPoint;
 
     private Helper helper = new Helper();
 
     // Use this for initialization
     void Start () {
-		
-	}
+        nextSegments = PoolManager.current.GetLevelCompomentNames();
+        Debug.Log(nextSegments.Count);
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -24,8 +25,8 @@ public class Spawner : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D col) {
         if (col.tag == "Player") {
-            nextSegmentName = ChooseNextSegment();
             spawnPoint = ChooseNextSpawnPoint();
+            nextSegmentName = ChooseNextSegment();
             DisplayNextSegment();
         }
     }
@@ -46,32 +47,45 @@ public class Spawner : MonoBehaviour {
     }
 
     string ChooseNextSegment() {
-        if (nextSegements.Length > 0) {
-            int limit = nextSegements.Length;
+        if (nextSegments.Count > 0) {
+            int limit = nextSegments.Count;
             int index = helper.RandomNumberGenerator(limit);
 
-            string name = nextSegements[index];
-            Debug.Log(name);
+            string name = nextSegments[index];
+
+            helper.ShuffleList(nextSegments, name);
+
+            //Debug.Log(name);
 
             return name;
         } else {
             string[] names = PoolManager.current.GetLevelCompomentNames().ToArray();
+
             int limit = names.Length;
             int index = helper.RandomNumberGenerator(limit);
 
             string name = names[index];
 
-            Debug.Log(name);
+            //Debug.Log(name);
 
             return name;
         }
     }
 
     Transform ChooseNextSpawnPoint() {
-        int limit = nextSegements.Length;
+        int limit = spawnPoints.Length;
         int index = helper.RandomNumberGenerator(limit);
 
         Transform spawnPoint = spawnPoints[index];
+
+        if(index == 0) {
+            nextSegments = helper.FilterArray(nextSegments, "slope", 1);
+        }else if( index == 1 || index == 2) {
+            nextSegments = helper.FilterArray(nextSegments, "high", 1);
+        }else if( index == 3) {
+            nextSegments = helper.FilterArray(nextSegments, "short", 1);
+        }
+
         return spawnPoint;
     }
 }

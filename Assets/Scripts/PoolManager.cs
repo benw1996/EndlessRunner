@@ -41,8 +41,11 @@ public class PoolManager : MonoBehaviour {
             mainPool.Add(names[i], objList);
         }
 
-        levelComponentNames = helper.FilterArray(names, "level", 0);
-        obstacleNames = helper.FilterArray(names, "obstacle", 0);
+        List<string> tempNames = new List<string>(names);
+
+        levelComponentNames = helper.FilterArray(tempNames, "level", 0);
+        Debug.Log(levelComponentNames.Count);
+        obstacleNames = helper.FilterArray(tempNames, "obstacle", 0);
 	}
 	
 	public GameObject GetPooledObject(string name) {
