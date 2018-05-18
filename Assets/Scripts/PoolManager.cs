@@ -43,7 +43,8 @@ public class PoolManager : MonoBehaviour {
 
         List<string> tempNames = new List<string>(names);
 
-        levelComponentNames = helper.FilterArray(tempNames, "level", 0);
+        //Here is where the list is populated
+        levelComponentNames = helper.FilterArray(tempNames, "level", 0); //<------------------
         Debug.Log(levelComponentNames.Count);
         obstacleNames = helper.FilterArray(tempNames, "obstacle", 0);
 	}
@@ -78,8 +79,9 @@ public class PoolManager : MonoBehaviour {
         return tempList;
     }
 
-    public List<string> GetLevelCompomentNames() {
-        return levelComponentNames;
+    //This is the public function for getting the list
+    public List<string> GetLevelComponentNames() {
+        return levelComponentNames; //<-----------------------------
     }
 
     public List<string> GetObstacleNames() {

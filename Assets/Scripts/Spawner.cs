@@ -14,8 +14,10 @@ public class Spawner : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
-        if (nextSegments.Count == 0)
-            nextSegments.AddRange(PoolManager.current.GetLevelCompomentNames());
+        if (nextSegments.Count == 0) {
+            //This is the code throwing the error, fixed the null reference exception but now get an ArgumentNullException
+            nextSegments.AddRange(PoolManager.current.GetLevelComponentNames());
+        }
         Debug.Log(nextSegments.Count);
     }
 	
@@ -60,7 +62,7 @@ public class Spawner : MonoBehaviour {
 
             return name;
         } else {
-            string[] names = PoolManager.current.GetLevelCompomentNames().ToArray();
+            string[] names = PoolManager.current.GetLevelComponentNames().ToArray();
 
             int limit = names.Length;
             int index = helper.RandomNumberGenerator(limit);
@@ -81,10 +83,13 @@ public class Spawner : MonoBehaviour {
 
         if(index == 0) {
             nextSegments = helper.FilterArray(nextSegments, "slope", 1);
+            Debug.Log(nextSegments.Count);
         }else if( index == 1 || index == 2) {
             nextSegments = helper.FilterArray(nextSegments, "high", 1);
+            Debug.Log(nextSegments.Count);
         }else if( index == 3) {
             nextSegments = helper.FilterArray(nextSegments, "short", 1);
+            Debug.Log(nextSegments.Count);
         }
 
         return spawnPoint;
