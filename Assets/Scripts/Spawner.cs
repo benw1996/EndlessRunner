@@ -14,6 +14,17 @@ public class Spawner : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
+        //if (nextSegments.Count == 0) {
+        //    //This is the code throwing the error, fixed the null reference exception but now get an ArgumentNullException
+        //    nextSegments.AddRange(PoolManager.current.GetLevelComponentNames());
+        //}
+        //Debug.Log(nextSegments.Count);
+
+        Invoke("Initialise", 1.0f);
+    }
+
+    private void Initialise() 
+    {
         if (nextSegments.Count == 0) {
             //This is the code throwing the error, fixed the null reference exception but now get an ArgumentNullException
             nextSegments.AddRange(PoolManager.current.GetLevelComponentNames());
