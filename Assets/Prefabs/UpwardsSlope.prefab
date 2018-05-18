@@ -215,9 +215,9 @@ MonoBehaviour:
   - {fileID: 4772139999756406}
   nextSegmentName: 
   nextSegments:
-  - Level/Low/Flatground1
-  - Level/Low/Flatground2
-  - Level/Low/Flatground3
+  - Level/High/Flatground1
+  - Level/High/Flatground2
+  - Level/High/Flatground3
 --- !u!212 &212516645844072926
 SpriteRenderer:
   m_ObjectHideFlags: 1
