@@ -35,14 +35,12 @@ public class LevelComponent : MonoBehaviour {
 
     void OnBecameVisible() {
         hasBeenSeen = true;
-        Debug.Log("Hello!");
     }
 
     void OnBecameInvisible() {
         if (hasBeenSeen) {
             gameObject.SetActive(false);
             hasBeenSeen = false;
-            Debug.Log("Goodbye!");
         }
     }
 

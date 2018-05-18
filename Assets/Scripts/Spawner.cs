@@ -7,29 +7,15 @@ public class Spawner : MonoBehaviour {
     public Transform[] spawnPoints;
 
     public string nextSegmentName = "";
-    public List<string> nextSegments = new List<string>();
+    public List<string> nextSegments;
     private Transform spawnPoint;
+    private int componentIndex;
 
     private Helper helper = new Helper();
 
     // Use this for initialization
     void Start() {
-        //if (nextSegments.Count == 0) {
-        //    //This is the code throwing the error, fixed the null reference exception but now get an ArgumentNullException
-        //    nextSegments.AddRange(PoolManager.current.GetLevelComponentNames());
-        //}
-        //Debug.Log(nextSegments.Count);
 
-        Invoke("Initialise", 1.0f);
-    }
-
-    private void Initialise() 
-    {
-        if (nextSegments.Count == 0) {
-            //This is the code throwing the error, fixed the null reference exception but now get an ArgumentNullException
-            nextSegments.AddRange(PoolManager.current.GetLevelComponentNames());
-        }
-        Debug.Log(nextSegments.Count);
     }
 	
 	// Update is called once per frame
@@ -67,13 +53,11 @@ public class Spawner : MonoBehaviour {
 
             string name = nextSegments[index];
 
-            helper.ShuffleList(nextSegments, name);
-
-            //Debug.Log(name);
+            PoolManager.current.ShuffleList(componentIndex, name);
 
             return name;
         } else {
-            string[] names = PoolManager.current.GetLevelComponentNames().ToArray();
+            string[] names = PoolManager.current.GetLevelComponentNames()[1].ToArray();
 
             int limit = names.Length;
             int index = helper.RandomNumberGenerator(limit);
@@ -93,13 +77,16 @@ public class Spawner : MonoBehaviour {
         Transform spawnPoint = spawnPoints[index];
 
         if(index == 0) {
-            nextSegments = helper.FilterArray(nextSegments, "slope", 1);
+            componentIndex = 0;
+            nextSegments = PoolManager.current.GetLevelComponentNames()[componentIndex];
             Debug.Log(nextSegments.Count);
         }else if( index == 1 || index == 2) {
-            nextSegments = helper.FilterArray(nextSegments, "high", 1);
+            componentIndex = 1;
+            nextSegments = PoolManager.current.GetLevelComponentNames()[componentIndex];
             Debug.Log(nextSegments.Count);
         }else if( index == 3) {
-            nextSegments = helper.FilterArray(nextSegments, "short", 1);
+            componentIndex = 2;
+            nextSegments = PoolManager.current.GetLevelComponentNames()[componentIndex];
             Debug.Log(nextSegments.Count);
         }
 

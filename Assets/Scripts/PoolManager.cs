@@ -15,7 +15,7 @@ public class PoolManager : MonoBehaviour {
     private Dictionary<string, List<GameObject>> mainPool = new Dictionary<string, List<GameObject>>();
     private List<GameObject> tempList;
 
-    private List<string> levelComponentNames;
+    private List<List<string>> levelComponentNames = new List<List<string>>();
     private List<string> obstacleNames;
 
     private Helper helper = new Helper();
@@ -43,8 +43,8 @@ public class PoolManager : MonoBehaviour {
 
         List<string> tempNames = new List<string>(names);
 
-        //Here is where the list is populated
-        levelComponentNames = helper.FilterArray(tempNames, "level", 0); //<------------------
+        //Here is where the list of level components is populated
+        PopulateListsofLevelComponents();
         Debug.Log(levelComponentNames.Count);
         obstacleNames = helper.FilterArray(tempNames, "obstacle", 0);
 	}
@@ -79,13 +79,29 @@ public class PoolManager : MonoBehaviour {
         return tempList;
     }
 
+    public void PopulateListsofLevelComponents() {
+        List<string> tempNames = new List<string>();
+        tempNames.AddRange(names);
+
+        levelComponentNames.Add(helper.FilterArray(tempNames, "slope", 1));
+        levelComponentNames.Add(helper.FilterArray(tempNames, "high", 1));
+        levelComponentNames.Add(helper.FilterArray(tempNames, "low", 1));
+    }
+
     //This is the public function for getting the list
-    public List<string> GetLevelComponentNames() {
-        return levelComponentNames; //<-----------------------------
+    public List<List<string>> GetLevelComponentNames() {
+        return levelComponentNames; 
     }
 
     public List<string> GetObstacleNames() {
         return obstacleNames;
+    }
+
+    //Public function for moving an item of a list to the end once it has been used
+    public void ShuffleList(int index, string item) {
+
+        levelComponentNames[index].Remove(item);
+        levelComponentNames[index].Add(item);
     }
 
     public void ResetPool() {

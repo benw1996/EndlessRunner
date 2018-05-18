@@ -32,13 +32,4 @@ public class Helper {
 
         return tempList;
     }
-
-    //Public function for moving an item of a list to the end once it has been used
-    public List<string> ShuffleList(List<string> listToShuffle, string item) {
-       
-        listToShuffle.Remove(item);
-        listToShuffle.Add(item);
-
-        return listToShuffle;
-    }
 }
