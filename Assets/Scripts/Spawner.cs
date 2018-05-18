@@ -71,25 +71,26 @@ public class Spawner : MonoBehaviour {
     }
 
     Transform ChooseNextSpawnPoint() {
-        int limit = spawnPoints.Length;
-        int index = helper.RandomNumberGenerator(limit);
+        if (spawnPoints.Length != 1) {
+            int limit = spawnPoints.Length;
+            int index = Random.Range(0, limit - 1);
 
-        Transform spawnPoint = spawnPoints[index];
+            Transform spawnPoint = spawnPoints[index];
 
-        if(index == 0) {
-            componentIndex = 0;
-            nextSegments = PoolManager.current.GetLevelComponentNames()[componentIndex];
-            Debug.Log(nextSegments.Count);
-        }else if( index == 1 || index == 2) {
-            componentIndex = 1;
-            nextSegments = PoolManager.current.GetLevelComponentNames()[componentIndex];
-            Debug.Log(nextSegments.Count);
-        }else if( index == 3) {
-            componentIndex = 2;
-            nextSegments = PoolManager.current.GetLevelComponentNames()[componentIndex];
-            Debug.Log(nextSegments.Count);
+            if (index == 0) {
+                componentIndex = 0;
+                nextSegments = PoolManager.current.GetLevelComponentNames()[componentIndex];
+            } else if (index == 1 || index == 2) {
+                componentIndex = 1;
+                nextSegments = PoolManager.current.GetLevelComponentNames()[componentIndex];
+            } else if (index == 3) {
+                componentIndex = 2;
+                nextSegments = PoolManager.current.GetLevelComponentNames()[componentIndex];
+            }
+
+            return spawnPoint;
+        } else {
+            return spawnPoints[0];
         }
-
-        return spawnPoint;
     }
 }

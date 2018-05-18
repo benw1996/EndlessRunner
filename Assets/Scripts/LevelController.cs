@@ -83,10 +83,10 @@ public class LevelController : MonoBehaviour {
     }
 
     private Vector2 CalculateVelocity(float angle) {
-        Vector2 velocity = new Vector2();
-
-        velocity.x = Mathf.Cos(angle);
-        velocity.y = Mathf.Sin(angle);
+        Vector2 velocity = new Vector2 {
+            x = Mathf.Cos(angle),
+            y = Mathf.Sin(angle)
+        };
 
         return velocity;
     }

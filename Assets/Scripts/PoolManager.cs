@@ -45,7 +45,7 @@ public class PoolManager : MonoBehaviour {
 
         //Here is where the list of level components is populated
         PopulateListsofLevelComponents();
-        Debug.Log(levelComponentNames.Count);
+
         obstacleNames = helper.FilterArray(tempNames, "obstacle", 0);
 	}
 	
