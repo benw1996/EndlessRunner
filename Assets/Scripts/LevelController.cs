@@ -29,7 +29,11 @@ public class LevelController : MonoBehaviour {
 
         levelComponents = PoolManager.current.GetPooledObjects("level");
         levelComponents.AddRange(PoolManager.current.GetPooledObjects("obstacle"));
-	}
+
+        GameController.PauseDelegate += Pause;
+        GameController.UnPauseDelegate += UnPause;
+        GameController.StartDelegate += StartGame;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -44,8 +48,7 @@ public class LevelController : MonoBehaviour {
 
         UpdateVelocity();
 
-        m_start.GetComponent<LevelComponent>().m_speed = 5.0f;
-        m_start.GetComponent<LevelComponent>().ForceStart();
+        player.FreezeControls(false);
     }
 
     public void UpdateVelocity() {
@@ -54,7 +57,7 @@ public class LevelController : MonoBehaviour {
         }
 
         m_start.GetComponent<LevelComponent>().m_speed = m_speed;
-        m_start.GetComponent<LevelComponent>().ForceStart();
+        m_start.GetComponent<LevelComponent>().ForceUpdate();
     }
 
     public void Stop(bool fall) {
@@ -69,6 +72,16 @@ public class LevelController : MonoBehaviour {
         Camera.main.GetComponent<CameraSmoothFollow>().m_follow = false;
         GameController.current.UpdateGameState(false);
         Debug.Log("GameOver");
+    }
+
+    public void Pause() {
+        m_speed = 0f;
+        UpdateVelocity();
+    }
+
+    public void UnPause() {
+        m_speed = 5f;
+        UpdateVelocity();
     }
 
     private float CalculateAngle(Transform pos1, Transform pos2) {

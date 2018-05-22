@@ -15,6 +15,10 @@ public class BGScroller : MonoBehaviour {
         rend = GetComponent<Renderer>();
 
         savedOffset = rend.sharedMaterial.GetTextureOffset("_MainTex");
+
+        GameController.StartDelegate += StartScrolling;
+        GameController.PauseDelegate += StopScrolling;
+        GameController.UnPauseDelegate += StartScrolling;
 	}
 	
 	// Update is called once per frame
@@ -30,7 +34,11 @@ public class BGScroller : MonoBehaviour {
         rend.sharedMaterial.SetTextureOffset("_MainTex", savedOffset);
     }
 
-    public void UpdateScrolling(bool newScroll) {
-        scroll = newScroll;
+    void StartScrolling() {
+        scroll = true;
+    }
+
+    void StopScrolling() {
+        scroll = false;
     }
 }

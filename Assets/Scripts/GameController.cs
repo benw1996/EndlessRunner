@@ -7,11 +7,21 @@ public class GameController : MonoBehaviour {
 
     public static GameController current;
 
+    public delegate void OnPauseDelegate();
+    public static event OnPauseDelegate PauseDelegate;
+
+    public delegate void OnUnPauseDelegate();
+    public static event OnUnPauseDelegate UnPauseDelegate;
+
+    public delegate void OnStartDelegate();
+    public static event OnStartDelegate StartDelegate;
+
     private float score = 0;
     public float scoreMultiplyer = 7;
     public Text scoreText;
 
     private bool playing = false;
+    private bool paused = false;
 
     void Awake() {
         current = this;
@@ -26,14 +36,26 @@ public class GameController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (Input.GetKeyDown("return") ){
-            LevelController.current.StartGame();
             playing = true;
-            UpdateScrolling(true);
+
+            StartDelegate();
+        }
+
+        if (Input.GetKeyDown("p") && playing) {
+            if (!paused) {
+                paused = true;
+
+                PauseDelegate();
+            } else {
+                paused = false;
+
+                UnPauseDelegate();
+            }
         }
 	}
 
     void FixedUpdate() {
-        if (playing) {
+        if (playing && !paused) {
             score += (Time.deltaTime * scoreMultiplyer);
             SetScoreText();
         }
@@ -41,16 +63,6 @@ public class GameController : MonoBehaviour {
 
     public void UpdateGameState(bool newState) {
         playing = newState;
-        UpdateScrolling(newState);
-    }
-
-    public void UpdateScrolling(bool scroll) {
-        GameObject[] backgroundObjs;
-        backgroundObjs = GameObject.FindGameObjectsWithTag("Background");
-
-        for(int i = 0; i < backgroundObjs.Length; i++) {
-            backgroundObjs[i].SendMessage("UpdateScrolling", scroll);
-        }
     }
 
     void SetScoreText() {

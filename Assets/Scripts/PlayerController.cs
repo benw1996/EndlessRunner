@@ -11,25 +11,42 @@ public class PlayerController : MonoBehaviour {
     public float m_rotationSpeed = 100f;
     private bool m_grounded;
 
+    private bool freezeControls = true;
+
     private enum HitDirection { None, Top, Bottom, Left, Right };
 
     // Use this for initialization
     void Start () {
         m_rigidbody = GetComponent<Rigidbody2D>();
+
+        GameController.PauseDelegate += Pause;
+        GameController.UnPauseDelegate += UnPause;
     }
 	
 	// Update is called once per frame
 	void Update () {
-		m_grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
+        if (!freezeControls) {
+            m_grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
 
-        if ( Input.GetButtonDown("Jump") && m_grounded) {
-            m_rigidbody.AddForce(new Vector2(0f, m_jumpForce));
+            if (Input.GetButtonDown("Jump") && m_grounded) {
+                m_rigidbody.AddForce(new Vector2(0f, m_jumpForce));
+            }
+
+            float h = Input.GetAxis("Horizontal");
+
+            if (!m_grounded)
+                transform.Rotate(0, 0, -h * Time.deltaTime * m_rotationSpeed);
         }
+    }
 
-        float h = Input.GetAxis("Horizontal");
+    public void Pause() {
+        FreezeControls(true);
+        m_rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePosition;
+    }
 
-        if (!m_grounded)
-            transform.Rotate(0, 0, -h * Time.deltaTime * m_rotationSpeed);
+    public void UnPause() {
+        FreezeControls(false);
+        m_rigidbody.constraints = RigidbodyConstraints2D.FreezePositionX;
     }
 
     public bool IsGrounded() {
@@ -52,7 +69,7 @@ public class PlayerController : MonoBehaviour {
 
         if(Vector2.Dot(colision, transform.up) < 0.7) {
             LevelController.current.Stop(true);
-            m_rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
+            m_rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePosition;
         } 
     }
 
@@ -84,5 +101,9 @@ public class PlayerController : MonoBehaviour {
         }
     
         return hitDirection;
+    }
+
+    public void FreezeControls(bool freeze) {
+        freezeControls = freeze;
     }
 }
