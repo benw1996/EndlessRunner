@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 50968077875264894}
   - component: {fileID: 114046933797916528}
   - component: {fileID: 68695634694635342}
+  - component: {fileID: 61284947463393304}
   m_Layer: 8
   m_Name: HighGround1
   m_TagString: Ground
@@ -184,7 +185,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1976366440971832}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.21, y: 0, z: 0}
+  m_LocalPosition: {x: 8.549334, y: -2.1815565, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 4375588443580384}
@@ -256,6 +257,31 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.09, y: 2.43}
   m_EdgeRadius: 0
+--- !u!61 &61284947463393304
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1976366440971832}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 4.88, y: -2.96}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 1}
+    oldSize: {x: 3.26, y: 2.83}
+    newSize: {x: 3.26, y: 2.83}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 4.82, y: 2.83}
+  m_EdgeRadius: 0
 --- !u!68 &68695634694635342
 EdgeCollider2D:
   m_ObjectHideFlags: 1
@@ -304,7 +330,7 @@ MonoBehaviour:
   - {fileID: 4053622897632512}
   - {fileID: 4541653489970126}
   nextSegmentName: 
-  nextSegements: []
+  nextSegments: []
 --- !u!212 &212118099666202686
 SpriteRenderer:
   m_ObjectHideFlags: 1

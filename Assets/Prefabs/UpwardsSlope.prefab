@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 68708929020224274}
   - component: {fileID: 50041206200199002}
   - component: {fileID: 114419844143912474}
+  - component: {fileID: 61107818686191296}
   m_Layer: 8
   m_Name: UpwardsSlope
   m_TagString: Ground
@@ -70,7 +71,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1184736527250628}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.69, y: 0, z: 0}
+  m_LocalPosition: {x: 11.456511, y: -5.8778224, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 4713694571862310}
@@ -144,6 +145,31 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!61 &61107818686191296
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1184736527250628}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 4.82, y: -2.14}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0.5}
+    oldSize: {x: 3.23, y: 2.85}
+    newSize: {x: 3.23, y: 2.85}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 4.73, y: 2.85}
+  m_EdgeRadius: 0
 --- !u!61 &61770044254517600
 BoxCollider2D:
   m_ObjectHideFlags: 1
