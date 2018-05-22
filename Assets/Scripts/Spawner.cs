@@ -61,6 +61,8 @@ public class Spawner : MonoBehaviour {
 
             string name = nextSegments[index];
 
+            //Debug.Log(name);
+
             PoolManager.current.ShuffleList(componentIndex, name);
 
             return name;

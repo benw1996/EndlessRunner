@@ -46,6 +46,8 @@ public class PlayerController : MonoBehaviour {
         ContactPoint2D contact = col.contacts[0];
         Vector2 colision = contact.normal;
 
+        col.gameObject.GetComponent<LevelComponent>().HasBeenUsed();
+
         //Debug.Log(Vector2.Dot(colision, transform.up));
 
         if(Vector2.Dot(colision, transform.up) < 0.7) {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LevelComponent : MonoBehaviour {
 
-    private bool hasBeenSeen = false;
+    private bool hasBeenUsed = false;
 
     public float m_speed = 0f;
     private Vector2 m_velocity = Vector2.left;
@@ -34,14 +34,14 @@ public class LevelComponent : MonoBehaviour {
     }
 
     void OnBecameVisible() {
-        hasBeenSeen = true;
+        //hasBeenSeen = true;
     }
 
     void OnBecameInvisible() {
-        if (hasBeenSeen) {
+        if (hasBeenUsed) {
             gameObject.SetActive(false);
-            hasBeenSeen = false;
-            Debug.Log("Goodbye!");
+            hasBeenUsed = false;
+            //Debug.Log("Goodbye!");
         }
     }
 
@@ -82,5 +82,9 @@ public class LevelComponent : MonoBehaviour {
         if(col.tag == "Player") {
             LevelController.current.Stop(!isObstacle);
         }
+    }
+
+    public void HasBeenUsed() {
+        hasBeenUsed = true;
     }
 }

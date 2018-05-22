@@ -99,9 +99,12 @@ public class PoolManager : MonoBehaviour {
 
     //Public function for moving an item of a list to the end once it has been used
     public void ShuffleList(int index, string item) {
+        Debug.Log(levelComponentNames[index].IndexOf(item));
 
         levelComponentNames[index].Remove(item);
         levelComponentNames[index].Add(item);
+
+        Debug.Log(levelComponentNames[index].IndexOf(item));
     }
 
     public void ResetPool() {
