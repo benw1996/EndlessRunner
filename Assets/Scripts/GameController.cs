@@ -42,15 +42,7 @@ public class GameController : MonoBehaviour {
         }
 
         if (Input.GetKeyDown("p") && playing) {
-            if (!paused) {
-                paused = true;
-
-                PauseDelegate();
-            } else {
-                paused = false;
-
-                UnPauseDelegate();
-            }
+            PauseButtonPressed();
         }
 	}
 
@@ -67,5 +59,17 @@ public class GameController : MonoBehaviour {
 
     void SetScoreText() {
         scoreText.text = score.ToString("00000000");
+    }
+
+    public void PauseButtonPressed() {
+        if (!paused) {
+            paused = true;
+
+            PauseDelegate();
+        } else {
+            paused = false;
+
+            UnPauseDelegate();
+        }
     }
 }
