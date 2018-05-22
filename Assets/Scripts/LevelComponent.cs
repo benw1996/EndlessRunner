@@ -41,6 +41,7 @@ public class LevelComponent : MonoBehaviour {
         if (hasBeenSeen) {
             gameObject.SetActive(false);
             hasBeenSeen = false;
+            Debug.Log("Goodbye!");
         }
     }
 
