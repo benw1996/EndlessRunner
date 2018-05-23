@@ -6,6 +6,9 @@ public class LevelController : MonoBehaviour {
 
     public static LevelController current;
 
+    public delegate void OnGameOverDelegate();
+    public static event OnGameOverDelegate GameOverDelegate;
+
     public float m_speed;
     private Vector2 m_Velocity;
     private bool m_stop = false;
@@ -68,10 +71,8 @@ public class LevelController : MonoBehaviour {
             acceleration = -100;
             m_stop = true;
         }
-        
-        Camera.main.GetComponent<CameraSmoothFollow>().m_follow = false;
-        GameController.current.UpdateGameState(false);
-        Debug.Log("GameOver");
+
+        GameOverDelegate();
     }
 
     public void Pause() {

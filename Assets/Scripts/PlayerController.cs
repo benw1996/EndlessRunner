@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour {
             m_grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
 
             if (Input.GetButtonDown("Jump") && m_grounded) {
+                
                 m_rigidbody.AddForce(new Vector2(0f, m_jumpForce));
             }
 
@@ -69,7 +70,7 @@ public class PlayerController : MonoBehaviour {
 
         if(Vector2.Dot(colision, transform.up) < 0.7) {
             LevelController.current.Stop(true);
-            m_rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePosition;
+            m_rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
         } 
     }
 

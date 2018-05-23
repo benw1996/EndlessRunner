@@ -9,7 +9,7 @@ public class CameraSmoothFollow : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+        LevelController.GameOverDelegate += ChangeFollow;
 	}
 	
 	// Update is called once per frame
@@ -18,4 +18,8 @@ public class CameraSmoothFollow : MonoBehaviour {
             transform.position = new Vector3(m_target.position.x, m_target.position.y, -10);
         }
 	}
+
+    void ChangeFollow() {
+        m_follow = !m_follow;
+    }
 }

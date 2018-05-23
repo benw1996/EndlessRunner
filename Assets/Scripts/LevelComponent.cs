@@ -29,6 +29,10 @@ public class LevelComponent : MonoBehaviour {
         SpawnObstacles();
     }
 
+    void OnDisable() {
+
+    }
+
     public void ForceUpdate() {
         m_rigidBody.velocity = m_velocity * m_speed;
     }

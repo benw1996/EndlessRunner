@@ -31,6 +31,7 @@ public class GameController : MonoBehaviour {
     void Start () {
         SetScoreText();
 
+        LevelController.GameOverDelegate += GameOver;
     }
 	
 	// Update is called once per frame
@@ -51,6 +52,10 @@ public class GameController : MonoBehaviour {
             score += (Time.deltaTime * scoreMultiplyer);
             SetScoreText();
         }
+    }
+
+    void GameOver() {
+        playing = false;
     }
 
     public void UpdateGameState(bool newState) {
