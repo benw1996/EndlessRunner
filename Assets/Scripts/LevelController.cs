@@ -75,6 +75,7 @@ public class LevelController : MonoBehaviour {
         }
 
         player.anim.SetBool("isPlaying", false);
+        player.FreezeControls(true);
         GameOverDelegate();
     }
 

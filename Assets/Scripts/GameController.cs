@@ -18,7 +18,12 @@ public class GameController : MonoBehaviour {
 
     private float score = 0;
     public float scoreMultiplyer = 7;
+
     public Text scoreText;
+    public Image pauseScreen;
+    public Button pauseButton;
+    public GameObject startScreen;
+    public Image settingsScreen;
 
     private bool playing = false;
     private bool paused = false;
@@ -38,6 +43,10 @@ public class GameController : MonoBehaviour {
 	void Update () {
         if (Input.GetKeyDown("return") ){
             playing = true;
+
+            scoreText.gameObject.SetActive(true);
+            pauseButton.gameObject.SetActive(true);
+            startScreen.SetActive(false);
 
             StartDelegate();
         }
@@ -66,13 +75,31 @@ public class GameController : MonoBehaviour {
         scoreText.text = score.ToString("00000000");
     }
 
+    public void ShowSettings() {
+        startScreen.SetActive(false);
+        settingsScreen.gameObject.SetActive(true);
+        settingsScreen.transform.position = new Vector3(593.5f, 354f, 0);
+    }
+
+    public void HideSettings() {
+        startScreen.SetActive(true);
+        settingsScreen.gameObject.SetActive(false);
+    }
+
     public void PauseButtonPressed() {
         if (!paused) {
             paused = true;
+            pauseScreen.gameObject.SetActive(true);
+            pauseButton.gameObject.SetActive(false);
+            settingsScreen.gameObject.SetActive(true);
+            settingsScreen.transform.position = new Vector3(774.5f, 354, 0);
 
             PauseDelegate();
         } else {
             paused = false;
+            pauseScreen.gameObject.SetActive(false);
+            pauseButton.gameObject.SetActive(true);
+            settingsScreen.gameObject.SetActive(false);
 
             UnPauseDelegate();
         }
