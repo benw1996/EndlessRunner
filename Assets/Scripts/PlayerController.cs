@@ -13,11 +13,15 @@ public class PlayerController : MonoBehaviour {
 
     private bool freezeControls = true;
 
+    public Animator anim;
+
     private enum HitDirection { None, Top, Bottom, Left, Right };
 
     // Use this for initialization
     void Start () {
         m_rigidbody = GetComponent<Rigidbody2D>();
+
+        anim = GetComponent<Animator>();
 
         GameController.PauseDelegate += Pause;
         GameController.UnPauseDelegate += UnPause;
@@ -31,6 +35,9 @@ public class PlayerController : MonoBehaviour {
             if (Input.GetButtonDown("Jump") && m_grounded) {
                 
                 m_rigidbody.AddForce(new Vector2(0f, m_jumpForce));
+
+                anim.SetBool("hasLanded", false);
+                anim.SetBool("hasJumped", true);
             }
 
             float h = Input.GetAxis("Horizontal");
@@ -66,11 +73,16 @@ public class PlayerController : MonoBehaviour {
 
         col.gameObject.GetComponent<LevelComponent>().HasBeenUsed();
 
+        anim.SetBool("hasLanded", true);
+        anim.SetBool("hasJumped", false);
+
         //Debug.Log(Vector2.Dot(colision, transform.up));
 
-        if(Vector2.Dot(colision, transform.up) < 0.7) {
+        if (Vector2.Dot(colision, transform.up) < 0.7) {
             LevelController.current.Stop(true);
             m_rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
+
+            anim.SetBool("hasCrashed", true);
         } 
     }
 

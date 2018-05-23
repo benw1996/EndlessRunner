@@ -52,6 +52,8 @@ public class LevelController : MonoBehaviour {
         UpdateVelocity();
 
         player.FreezeControls(false);
+
+        player.anim.SetBool("isPlaying", true);
     }
 
     public void UpdateVelocity() {
@@ -72,6 +74,7 @@ public class LevelController : MonoBehaviour {
             m_stop = true;
         }
 
+        player.anim.SetBool("isPlaying", false);
         GameOverDelegate();
     }
 
