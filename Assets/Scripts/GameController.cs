@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour {
     public static event OnStartDelegate StartDelegate;
 
     private float score = 0;
+    private string scoreDisplay = "00000000";
     public float scoreMultiplyer = 7;
 
     public Text scoreText;
@@ -35,7 +36,7 @@ public class GameController : MonoBehaviour {
     // Use this for initialization
     void Start () {
         SetScoreText();
-
+        
         LevelController.GameOverDelegate += GameOver;
     }
 	
@@ -72,7 +73,15 @@ public class GameController : MonoBehaviour {
     }
 
     void SetScoreText() {
-        scoreText.text = score.ToString("00000000");
+        if ((int)Mathf.Floor(Mathf.Log10(score)) >= scoreDisplay.Length) {
+            scoreDisplay += "0";
+            Transform transform = scoreText.transform;
+            Vector3 tempVector = new Vector3(transform.position.x - 20, transform.position.y, transform.position.z);
+
+            scoreText.transform.position = tempVector;
+        }
+
+        scoreText.text = score.ToString(scoreDisplay);
     }
 
     public void ShowSettings() {
