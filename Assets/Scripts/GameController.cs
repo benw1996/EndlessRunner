@@ -16,11 +16,15 @@ public class GameController : MonoBehaviour {
     public delegate void OnStartDelegate();
     public static event OnStartDelegate StartDelegate;
 
+    private float highScore;
     private float score = 0;
     private string scoreDisplay = "00000000";
     public float scoreMultiplyer = 7;
 
+    private JSONParser parser;
+
     public Text scoreText;
+    public Text highscoreText;
     public Image pauseScreen;
     public Button pauseButton;
     public GameObject startScreen;
@@ -38,6 +42,11 @@ public class GameController : MonoBehaviour {
         SetScoreText();
         
         LevelController.GameOverDelegate += GameOver;
+
+        parser = JSONParser.Instance();
+        highScore = parser.GetHighScore();
+
+        SetHighscoreText();
     }
 	
 	// Update is called once per frame
@@ -66,6 +75,11 @@ public class GameController : MonoBehaviour {
 
     void GameOver() {
         playing = false;
+
+        if(score > highScore) {
+            parser.SetHighScore(score);
+            parser.SaveJson();
+        }
     }
 
     public void UpdateGameState(bool newState) {
@@ -76,23 +90,45 @@ public class GameController : MonoBehaviour {
     /// This function takes the players score and displays it on screen.
     /// </summary>
     void SetScoreText() {
-        //Check that if the score is greater than 12 digits then "alot" is displayed instead of continuing to display the score.
-        if ((int)Mathf.Floor(Mathf.Log10(score)) < 12) {
+        string tempScore = NormaliseScore(score);
+
+        if ((int)Mathf.Floor(Mathf.Log10(score)) >= scoreDisplay.Length) {
+            //The text box is then moved along to fit the extra digit in.
+            Transform transform = scoreText.transform;
+            Vector3 tempVector = new Vector3(transform.position.x - 20, transform.position.y, transform.position.z);
+
+            scoreText.transform.position = tempVector;
+        }
+
+        scoreText.text = tempScore;
+    }
+
+    void SetHighscoreText() {
+        string text = "High score: ";
+        string highScoreString = NormaliseScore(highScore);
+        Debug.Log(highScoreString);
+
+        text += highScoreString;
+
+        highscoreText.text = text;
+    }
+
+    string NormaliseScore(float scoreToNormalise) {
+        string tempString;
+
+        if ((int)Mathf.Floor(Mathf.Log10(scoreToNormalise)) < 12) {
             //If statement to check if the length of score is greater than the length of the score in the text box.
-            if ((int)Mathf.Floor(Mathf.Log10(score)) >= scoreDisplay.Length) {
+            if ((int)Mathf.Floor(Mathf.Log10(scoreToNormalise)) >= scoreDisplay.Length) {
                 //If the length is equal to or greater than the length of the score in the text box then an additional 0 is added 
                 scoreDisplay += "0";
-                //The text box is then moved along to fit the extra digit in.
-                Transform transform = scoreText.transform;
-                Vector3 tempVector = new Vector3(transform.position.x - 20, transform.position.y, transform.position.z);
-
-                scoreText.transform.position = tempVector;
             }
             //The score is then displayed in the text box.
-            scoreText.text = score.ToString(scoreDisplay);
+            tempString = scoreToNormalise.ToString(scoreDisplay);
         } else {
-            scoreText.text = "a lot";
+            tempString = "a lot";
         }
+
+        return tempString;
     }
 
     public void ShowSettings() {
