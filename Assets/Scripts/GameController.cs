@@ -103,6 +103,9 @@ public class GameController : MonoBehaviour {
         scoreText.text = tempScore;
     }
 
+    /// <summary>
+    /// This function displays the high score to the text field on the start screen
+    /// </summary>
     void SetHighscoreText() {
         string text = "High score: ";
         string highScoreString = NormaliseScore(highScore);
@@ -113,6 +116,13 @@ public class GameController : MonoBehaviour {
         highscoreText.text = text;
     }
 
+    /// <summary>
+    /// This function normalises the score to be displayed as a string,
+    /// If it is bellow 12 but above the length of the string then a zero is added to the string
+    /// and the score is converted to a string, if it is above 12 digits then "a lot" is displayed instead.
+    /// </summary>
+    /// <param name="scoreToNormalise">The score to be normalised.</param>
+    /// <returns></returns>
     string NormaliseScore(float scoreToNormalise) {
         string tempString;
 
@@ -165,5 +175,18 @@ public class GameController : MonoBehaviour {
             //Unpause delegate is called
             UnPauseDelegate();
         }
+    }
+
+    /// <summary>
+    /// Simple function that resets the high score to 0 then saves the high score to the json file.
+    /// </summary>
+    public void ResetStatistics() {
+        //Highscore is reset to 0 and put to 0 in the JSON file.
+        highScore = 0;
+        parser.SetHighScore(highScore);
+        //The new high score is saved to the file.
+        parser.SaveJson();
+        //The new highscore is displayed.
+        SetHighscoreText();
     }
 }
