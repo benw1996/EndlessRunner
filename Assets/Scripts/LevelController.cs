@@ -12,6 +12,7 @@ public class LevelController : MonoBehaviour {
     public float m_speed;
     private Vector2 m_Velocity;
     private bool m_stop = false;
+    private bool gameOver = false;
 
     private float acceleration = -3;
     private float minSpeed = 0f;
@@ -66,17 +67,19 @@ public class LevelController : MonoBehaviour {
     }
 
     public void Stop(bool fall) {
-        if (fall) {
-            acceleration = -3;
-            m_stop = true;
-        } else {
-            acceleration = -100;
-            m_stop = true;
-        }
+        if (!gameOver) {
+            if (fall) {
+                acceleration = -3;
+                m_stop = true;
+            } else {
+                acceleration = -100;
+                m_stop = true;
+            }
 
-        player.anim.SetBool("isPlaying", false);
-        player.FreezeControls(true);
-        GameOverDelegate();
+            player.anim.SetBool("isPlaying", false);
+            player.FreezeControls(true);
+            GameOverDelegate();
+        }
     }
 
     public void Pause() {

@@ -16,6 +16,12 @@ public class GameController : MonoBehaviour {
     public delegate void OnStartDelegate();
     public static event OnStartDelegate StartDelegate;
 
+    public delegate void OnHomeDelegate();
+    public static event OnHomeDelegate HomeDelegate;
+
+    public delegate void OnRestartDelegate();
+    public static event OnRestartDelegate RestartDelegate;
+
     private float highScore;
     private float score = 0;
     private string scoreDisplay = "00000000";
@@ -23,12 +29,19 @@ public class GameController : MonoBehaviour {
 
     private JSONParser parser;
 
+    //All the UI elements
     public Text scoreText;
     public Text highscoreText;
     public Image pauseScreen;
     public Button pauseButton;
     public GameObject startScreen;
     public Image settingsScreen;
+    public Slider vollumeSlider;
+    public Image gameOverScreen;
+    public Text newHighscoreText;
+    public Text gameoverScoreText;
+
+    public AudioSource music;
 
     private bool playing = false;
     private bool paused = false;
@@ -76,9 +89,20 @@ public class GameController : MonoBehaviour {
     void GameOver() {
         playing = false;
 
-        if(score > highScore) {
+        scoreText.gameObject.SetActive(false);
+        pauseButton.gameObject.SetActive(false);
+
+        gameOverScreen.gameObject.SetActive(true);
+        string text = "Score: ";
+        string gameOverScore = NormaliseScore(score);
+        text += gameOverScore;
+        gameoverScoreText.text = text;
+
+        if (score > highScore) {
             parser.SetHighScore(score);
             parser.SaveJson();
+
+            newHighscoreText.gameObject.SetActive(true);
         }
     }
 
@@ -188,5 +212,26 @@ public class GameController : MonoBehaviour {
         parser.SaveJson();
         //The new highscore is displayed.
         SetHighscoreText();
+    }
+
+    /// <summary>
+    /// Public method for controlling the audio via the slider in the settings.
+    /// </summary>
+    public void VollumeController() {
+        music.volume = vollumeSlider.value;
+    }
+
+    /// <summary>
+    /// Public method for calling the home delegate.
+    /// </summary>
+    public void HomeButtonPressed() {
+        HomeDelegate();
+    }
+
+    /// <summary>
+    /// Public method for calling the restart delegate.
+    /// </summary>
+    public void RestartButtonPressed() {
+        RestartDelegate();
     }
 }
