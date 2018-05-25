@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelController : MonoBehaviour {
 
@@ -8,6 +9,12 @@ public class LevelController : MonoBehaviour {
 
     public delegate void OnGameOverDelegate();
     public static event OnGameOverDelegate GameOverDelegate;
+
+    public delegate void OnResetDelegate();
+    public static event OnResetDelegate ResetDelegate;
+
+    public delegate void OnGameReadyToRestart();
+    public static event OnGameReadyToRestart GameReadyToRestart;
 
     public float m_speed;
     private Vector2 m_Velocity;
@@ -20,6 +27,9 @@ public class LevelController : MonoBehaviour {
 
     private List<GameObject> levelComponents;
     public GameObject m_start;
+    public Transform startPosition;
+
+    public Text resetTimer;
 
     private PlayerController player;
 
@@ -37,6 +47,9 @@ public class LevelController : MonoBehaviour {
         GameController.PauseDelegate += Pause;
         GameController.UnPauseDelegate += UnPause;
         GameController.StartDelegate += StartGame;
+
+        GameController.HomeDelegate += ResetLevel;
+        GameController.RestartDelegate += RestartGame;
     }
 	
 	// Update is called once per frame
@@ -50,11 +63,13 @@ public class LevelController : MonoBehaviour {
     public void StartGame() {
         m_Velocity = Vector2.left;
 
+        m_speed = 5;
         UpdateVelocity();
 
         player.FreezeControls(false);
 
         player.anim.SetBool("isPlaying", true);
+        player.anim.SetBool("restart", false);
     }
 
     public void UpdateVelocity() {
@@ -110,5 +125,53 @@ public class LevelController : MonoBehaviour {
         };
 
         return velocity;
+    }
+
+    private void DisableAllLevelComponents() {
+        for (int i = 0; i < levelComponents.Count; i++) {
+            levelComponents[i].SetActive(false);
+        }
+    }
+
+    private void ResetLevel() {
+        m_speed = 0f;
+        UpdateVelocity();
+
+        DisableAllLevelComponents();
+
+        m_start.SetActive(false);
+        m_start.transform.position = startPosition.position;
+        m_start.SetActive(true);
+
+        gameOver = false;
+        m_stop = false;
+        player.FreezeControls(true);
+        ResetDelegate();
+    }
+
+    private void RestartGame() {
+        ResetLevel();
+
+        StartCoroutine(Restart());
+    }
+
+    IEnumerator Restart() {
+        resetTimer.text = "3";
+        resetTimer.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(1);
+        resetTimer.text = "2";
+
+        yield return new WaitForSeconds(1);
+        resetTimer.text = "1";
+
+        yield return new WaitForSeconds(1);
+        resetTimer.gameObject.SetActive(false);
+
+        GameReadyToRestart();
+
+        m_speed = 5;
+        UpdateVelocity();
+        player.FreezeControls(false);
     }
 }

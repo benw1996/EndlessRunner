@@ -55,6 +55,7 @@ public class GameController : MonoBehaviour {
         SetScoreText();
         
         LevelController.GameOverDelegate += GameOver;
+        LevelController.GameReadyToRestart += Restart;
 
         parser = JSONParser.Instance();
         highScore = parser.GetHighScore();
@@ -67,9 +68,8 @@ public class GameController : MonoBehaviour {
         if (Input.GetKeyDown("return") ){
             playing = true;
 
-            scoreText.gameObject.SetActive(true);
-            pauseButton.gameObject.SetActive(true);
-            startScreen.SetActive(false);
+            DisplayGameUI();
+            HideStartScreen();
 
             StartDelegate();
         }
@@ -89,10 +89,10 @@ public class GameController : MonoBehaviour {
     void GameOver() {
         playing = false;
 
-        scoreText.gameObject.SetActive(false);
-        pauseButton.gameObject.SetActive(false);
+        HideGameUI();
 
-        gameOverScreen.gameObject.SetActive(true);
+        DisplayGameOverScreen();
+
         string text = "Score: ";
         string gameOverScore = NormaliseScore(score);
         text += gameOverScore;
@@ -166,14 +166,14 @@ public class GameController : MonoBehaviour {
     }
 
     public void ShowSettings() {
-        startScreen.SetActive(false);
-        settingsScreen.gameObject.SetActive(true);
+        HideStartScreen();
+        DisplaySettings();
         settingsScreen.transform.position = new Vector3(593.5f, 354f, 0);
     }
 
-    public void HideSettings() {
-        startScreen.SetActive(true);
-        settingsScreen.gameObject.SetActive(false);
+    public void SettingsBackButtonPressed() {
+        DisplayStartScreen();
+        HideSettings();
     }
 
     //Function called when the pause button has been pressed
@@ -182,9 +182,9 @@ public class GameController : MonoBehaviour {
             //Paused boolean set to true
             paused = true;
             //Paused UI displayed on screen
-            pauseScreen.gameObject.SetActive(true);
-            pauseButton.gameObject.SetActive(false);
-            settingsScreen.gameObject.SetActive(true);
+            DisplayPauseScreen();
+            HideGameUI();
+            DisplaySettings();
             //Settings screen displayed beside the paused menu
             settingsScreen.transform.position = new Vector3(774.5f, 354, 0);
             //Pause delegate is called
@@ -193,9 +193,9 @@ public class GameController : MonoBehaviour {
             //Paused boolean set to true
             paused = false;
             //Paused UI taken off screen
-            pauseScreen.gameObject.SetActive(false);
-            pauseButton.gameObject.SetActive(true);
-            settingsScreen.gameObject.SetActive(false);
+            HidePauseScreen();
+            DisplayGameUI();
+            HideSettings();
             //Unpause delegate is called
             UnPauseDelegate();
         }
@@ -225,13 +225,88 @@ public class GameController : MonoBehaviour {
     /// Public method for calling the home delegate.
     /// </summary>
     public void HomeButtonPressed() {
+        playing = false;
+        score = 0;
+
         HomeDelegate();
+
+        HidePauseScreen();
+        HideGameOverScreen();
+        HideSettings();
+
+        DisplayStartScreen();
     }
 
     /// <summary>
     /// Public method for calling the restart delegate.
     /// </summary>
     public void RestartButtonPressed() {
+        playing = false;
+        score = 0;
+
         RestartDelegate();
+
+        HidePauseScreen();
+        HideGameOverScreen();
+        HideSettings();
+    }
+
+    public void Restart() {
+        DisplayGameUI();
+        playing = true;
+    }
+
+    //All the methods for displaying and hiding the various UI screens.
+
+    //Method for displaying the game UI
+    private void DisplayGameUI() {
+        scoreText.gameObject.SetActive(true);
+        pauseButton.gameObject.SetActive(true);
+    }
+
+    //Method for Hiding the game UI
+    private void HideGameUI() {
+        scoreText.gameObject.SetActive(false);
+        pauseButton.gameObject.SetActive(false);
+    }
+
+    //Method for displaying the settings
+    private void DisplaySettings() {
+        settingsScreen.gameObject.SetActive(true);
+    }
+
+    //Method for hiding the settings
+    private void HideSettings() {
+        settingsScreen.gameObject.SetActive(false);
+    }
+
+    //Method for displaying the pause screen
+    private void DisplayPauseScreen() {
+        pauseScreen.gameObject.SetActive(true);
+    }
+
+    //Method for hiding the pause screen
+    private void HidePauseScreen() {
+        pauseScreen.gameObject.SetActive(false);
+    }
+
+    //Method for displaying the start screen
+    private void DisplayStartScreen() {
+        startScreen.gameObject.SetActive(true);
+    }
+
+    //Method for hiding the start screen
+    private void HideStartScreen() {
+        startScreen.gameObject.SetActive(false);
+    }
+
+    //Method for displaying the gameover screen
+    private void DisplayGameOverScreen() {
+        gameOverScreen.gameObject.SetActive(true);
+    }
+
+    //Method for hiding the gameover screen
+    private void HideGameOverScreen() {
+        gameOverScreen.gameObject.SetActive(false);
     }
 }

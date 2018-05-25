@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
     public Transform groundCheck;
+    public Transform startPosition;
     private Rigidbody2D m_rigidbody;
 
     public float m_jumpForce = 1000f;
@@ -25,6 +26,8 @@ public class PlayerController : MonoBehaviour {
 
         GameController.PauseDelegate += Pause;
         GameController.UnPauseDelegate += UnPause;
+        GameController.HomeDelegate += Restart;
+        GameController.RestartDelegate += Restart;
     }
 	
 	// Update is called once per frame
@@ -119,5 +122,14 @@ public class PlayerController : MonoBehaviour {
 
     public void FreezeControls(bool freeze) {
         freezeControls = freeze;
+    }
+
+    private void Restart() {
+        transform.position = startPosition.position;
+        transform.rotation = startPosition.rotation;
+        m_rigidbody.constraints = RigidbodyConstraints2D.FreezePositionX;
+
+        anim.SetBool("restart", true);
+        anim.SetBool("hasCrashed", false);
     }
 }

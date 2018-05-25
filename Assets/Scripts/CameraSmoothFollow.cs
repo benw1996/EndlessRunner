@@ -10,6 +10,7 @@ public class CameraSmoothFollow : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         LevelController.GameOverDelegate += ChangeFollow;
+        LevelController.ResetDelegate += Reset;
 	}
 	
 	// Update is called once per frame
@@ -21,5 +22,9 @@ public class CameraSmoothFollow : MonoBehaviour {
 
     void ChangeFollow() {
         m_follow = !m_follow;
+    }
+
+    void Reset() {
+        m_follow = true;
     }
 }

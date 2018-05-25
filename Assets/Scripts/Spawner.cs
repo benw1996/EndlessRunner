@@ -26,6 +26,11 @@ public class Spawner : MonoBehaviour {
 		
 	}
 
+    void OnDisable() {
+        hasSpawnedObject = false;
+        Debug.Log("hello");
+    }
+
     void OnTriggerEnter2D(Collider2D col) {
         if (col.tag == "Player" && !hasSpawnedObject) {
             spawnPoint = ChooseNextSpawnPoint();
