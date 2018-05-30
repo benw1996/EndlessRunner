@@ -28,7 +28,7 @@ public class Spawner : MonoBehaviour {
 
     void OnDisable() {
         hasSpawnedObject = false;
-        Debug.Log("hello");
+        //Debug.Log("hello");
     }
 
     void OnTriggerEnter2D(Collider2D col) {

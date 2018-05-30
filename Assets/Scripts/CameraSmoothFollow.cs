@@ -16,7 +16,11 @@ public class CameraSmoothFollow : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (m_follow) {
-            transform.position = new Vector3(m_target.position.x, m_target.position.y, -10);
+            //transform.position = new Vector3(m_target.position.x, m_target.position.y, -10);
+            Vector3 target = m_target.position;
+            target.z = -10;
+
+            transform.position = Vector3.Slerp(transform.position, target, 0.1f);
         }
 	}
 

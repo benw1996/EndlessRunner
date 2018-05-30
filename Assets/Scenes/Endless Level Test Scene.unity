@@ -2966,6 +2966,31 @@ Prefab:
       propertyPath: startPosition
       value: 
       objectReference: {fileID: 452451719}
+    - target: {fileID: 50979324698576578, guid: 88f7aba34f444d449a4bb47ba23d4c12,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 50979324698576578, guid: 88f7aba34f444d449a4bb47ba23d4c12,
+        type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: f21aa3fc87b0883459b50d43d5d7fe8b, type: 2}
+    - target: {fileID: 50979324698576578, guid: 88f7aba34f444d449a4bb47ba23d4c12,
+        type: 2}
+      propertyPath: m_Interpolate
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 50979324698576578, guid: 88f7aba34f444d449a4bb47ba23d4c12,
+        type: 2}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 50979324698576578, guid: 88f7aba34f444d449a4bb47ba23d4c12,
+        type: 2}
+      propertyPath: m_AngularDrag
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 88f7aba34f444d449a4bb47ba23d4c12, type: 2}
   m_IsPrefabParent: 0
