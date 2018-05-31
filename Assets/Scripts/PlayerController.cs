@@ -16,6 +16,10 @@ public class PlayerController : MonoBehaviour {
     private bool freezeControls = true;
 
     public Animator anim;
+    public AudioSource jumpSound;
+    public AudioSource landSound;
+    public AudioSource ridingSound;
+    public AudioSource crashSound;
 
     private enum HitDirection { None, Top, Bottom, Left, Right };
 
@@ -42,6 +46,15 @@ public class PlayerController : MonoBehaviour {
 
                 anim.SetBool("hasLanded", false);
                 anim.SetBool("hasJumped", true);
+
+                jumpSound.Play();
+            }
+
+            if (m_grounded && ridingSound.isPlaying == false) {
+                ridingSound.Play();
+                landSound.Stop();
+            } else if(!m_grounded){
+                ridingSound.Stop();
             }
 
             //float h = Input.GetAxis("Horizontal");
@@ -87,6 +100,9 @@ public class PlayerController : MonoBehaviour {
         anim.SetBool("hasLanded", true);
         anim.SetBool("hasJumped", false);
 
+        if(landSound.isPlaying == false)
+            landSound.Play();
+
         //Debug.Log(Vector2.Dot(colision, transform.up));
 
         if (Vector2.Dot(colision, transform.up) < 0.6) {
@@ -94,6 +110,8 @@ public class PlayerController : MonoBehaviour {
             m_rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
 
             anim.SetBool("hasCrashed", true);
+            crashSound.Play();
+            ridingSound.Stop();
         } 
     }
 
