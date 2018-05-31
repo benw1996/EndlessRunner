@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour {
     public float m_jumpForce = 1000f;
     public float m_rotationSpeed = 100f;
     private bool m_grounded;
+    private bool m_jump = false;
 
     private bool freezeControls = true;
 
@@ -37,17 +38,24 @@ public class PlayerController : MonoBehaviour {
 
             if (Input.GetButtonDown("Jump") && m_grounded) {
                 Debug.Log("I just jumped!!!!!!!");
-                
-                m_rigidbody.AddForce(new Vector2(0f, m_jumpForce));
+
+                m_jump = true;
 
                 anim.SetBool("hasLanded", false);
                 anim.SetBool("hasJumped", true);
             }
 
-            float h = Input.GetAxis("Horizontal");
+            //float h = Input.GetAxis("Horizontal");
 
-            if (!m_grounded)
-                transform.Rotate(0, 0, -h * Time.deltaTime * m_rotationSpeed);
+            //if (!m_grounded)
+            //    transform.Rotate(0, 0, -h * Time.deltaTime * m_rotationSpeed);
+        }
+    }
+
+    void FixedUpdate() {
+        if (m_jump) {
+            m_rigidbody.AddForce(new Vector2(0f, m_jumpForce));
+            m_jump = false;
         }
     }
 
@@ -82,7 +90,7 @@ public class PlayerController : MonoBehaviour {
 
         //Debug.Log(Vector2.Dot(colision, transform.up));
 
-        if (Vector2.Dot(colision, transform.up) < 0.7) {
+        if (Vector2.Dot(colision, transform.up) < 0.6) {
             LevelController.current.Stop(true);
             m_rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
 
@@ -131,5 +139,6 @@ public class PlayerController : MonoBehaviour {
 
         anim.SetBool("restart", true);
         anim.SetBool("hasCrashed", false);
+        anim.SetBool("isPlaying", true);
     }
 }

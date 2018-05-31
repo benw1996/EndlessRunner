@@ -27,11 +27,16 @@ public class GameController : MonoBehaviour {
     private string scoreDisplay = "00000000";
     public float scoreMultiplyer = 7;
 
+    private int coinsCollected = 0;
+    private int totalCoinsCollected = 0;
+
     private JSONParser parser;
 
     //All the UI elements
     public Text scoreText;
+    public Text coinCounterText;
     public Text highscoreText;
+    public Text totalCoinsText;
     public Image pauseScreen;
     public Button pauseButton;
     public GameObject startScreen;
@@ -59,6 +64,8 @@ public class GameController : MonoBehaviour {
 
         parser = JSONParser.Instance();
         highScore = parser.GetHighScore();
+        totalCoinsCollected = parser.GetCoinsCollected();
+        SetTotalCoinsCollectedText();
 
         SetHighscoreText();
     }
@@ -98,16 +105,31 @@ public class GameController : MonoBehaviour {
         text += gameOverScore;
         gameoverScoreText.text = text;
 
+        parser.AddCoinsCollected(coinsCollected);
+        totalCoinsCollected += coinsCollected;
+
+        SetTotalCoinsCollectedText();
+
         if (score > highScore) {
             parser.SetHighScore(score);
-            parser.SaveJson();
 
             newHighscoreText.gameObject.SetActive(true);
         }
+
+        parser.SaveJson();
     }
 
     public void UpdateGameState(bool newState) {
         playing = newState;
+    }
+
+    public void IncrementCoinsCollected() {
+        coinsCollected++;
+        coinCounterText.text = coinsCollected.ToString("00000000");
+    }
+
+    void SetTotalCoinsCollectedText() {
+        totalCoinsText.text = totalCoinsCollected.ToString("00000000");
     }
 
     /// <summary>
@@ -133,7 +155,6 @@ public class GameController : MonoBehaviour {
     void SetHighscoreText() {
         string text = "High score: ";
         string highScoreString = NormaliseScore(highScore);
-        Debug.Log(highScoreString);
 
         text += highScoreString;
 
@@ -208,6 +229,8 @@ public class GameController : MonoBehaviour {
         //Highscore is reset to 0 and put to 0 in the JSON file.
         highScore = 0;
         parser.SetHighScore(highScore);
+        coinsCollected = 0;
+        parser.ResetCoinsCollected();
         //The new high score is saved to the file.
         parser.SaveJson();
         //The new highscore is displayed.
@@ -227,6 +250,7 @@ public class GameController : MonoBehaviour {
     public void HomeButtonPressed() {
         playing = false;
         score = 0;
+        coinsCollected = 0;
 
         HomeDelegate();
 
@@ -243,6 +267,7 @@ public class GameController : MonoBehaviour {
     public void RestartButtonPressed() {
         playing = false;
         score = 0;
+        coinsCollected = 0;
 
         RestartDelegate();
 
@@ -262,12 +287,14 @@ public class GameController : MonoBehaviour {
     private void DisplayGameUI() {
         scoreText.gameObject.SetActive(true);
         pauseButton.gameObject.SetActive(true);
+        coinCounterText.gameObject.SetActive(true);
     }
 
     //Method for Hiding the game UI
     private void HideGameUI() {
         scoreText.gameObject.SetActive(false);
         pauseButton.gameObject.SetActive(false);
+        coinCounterText.gameObject.SetActive(false);
     }
 
     //Method for displaying the settings

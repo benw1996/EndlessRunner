@@ -10,10 +10,12 @@ public class LevelComponent : MonoBehaviour {
     private Vector2 m_velocity = Vector2.left;
 
     public Transform[] m_obstacleSpawnPoints;
+    public Transform[] m_coinSpawnPoints;
 
     private Rigidbody2D m_rigidBody;
 
     public bool isObstacle = false;
+    public bool isCoin = false;
 
     private Helper helper = new Helper();
 
@@ -27,6 +29,7 @@ public class LevelComponent : MonoBehaviour {
         m_rigidBody.velocity = m_velocity * m_speed;
 
         SpawnObstacles();
+        SpawnCoin();
     }
 
     void OnDisable() {
@@ -63,7 +66,7 @@ public class LevelComponent : MonoBehaviour {
 
     private void SpawnObstacles() {
         if(m_obstacleSpawnPoints.Length != 0) {
-            Debug.Log(PoolManager.current.GetObstacleNames().ToArray().Length);
+            //Debug.Log(PoolManager.current.GetObstacleNames().ToArray().Length);
             int limit = PoolManager.current.GetObstacleNames().ToArray().Length;
             int index = helper.RandomNumberGenerator(limit);
 
@@ -82,9 +85,29 @@ public class LevelComponent : MonoBehaviour {
         }
     }
 
+    private void SpawnCoin() {
+        if(m_coinSpawnPoints.Length != 0) {
+            GameObject obj = PoolManager.current.GetPooledObject("Level/Coin");
+
+            if (obj != null) {
+                int limit = m_coinSpawnPoints.Length;
+                int index = Random.Range(0, limit);
+
+                obj.transform.position = m_coinSpawnPoints[index].position;
+                obj.transform.rotation = m_coinSpawnPoints[index].rotation;
+                obj.SetActive(true);
+            }
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D col) {
         if(col.tag == "Player") {
-            LevelController.current.Stop(!isObstacle);
+            if (!isCoin) {
+                LevelController.current.Stop(!isObstacle);
+            } else {
+                GameController.current.SendMessage("IncrementCoinsCollected");
+                gameObject.SetActive(false);
+            }
         }
     }
 

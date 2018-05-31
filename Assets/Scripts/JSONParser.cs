@@ -11,7 +11,7 @@ public class JSONParser {
 
     protected JSONParser() {
         ReadJson();
-        Debug.Log("New instance made.");
+        //Debug.Log("New instance made.");
     }
 
     public static JSONParser Instance() {
@@ -27,6 +27,7 @@ public class JSONParser {
     [System.Serializable]
     public class Data {
         public float highscore;
+        public int coinscollected;
     }
 
     public void ReadJson() {
@@ -48,7 +49,7 @@ public class JSONParser {
 
             File.WriteAllText(filePath, data);
 
-            Debug.Log("JSON saved!");
+            //Debug.Log("JSON saved!");
         } else {
             Debug.LogError("JSON File does not exist!");
         }
@@ -60,5 +61,17 @@ public class JSONParser {
 
     public void SetHighScore(float score) {
         playerData.highscore = score;
+    }
+
+    public int GetCoinsCollected() {
+        return playerData.coinscollected; 
+    }
+
+    public void AddCoinsCollected(int coins) {
+        playerData.coinscollected += coins;
+    }
+
+    public void ResetCoinsCollected() {
+        playerData.coinscollected = 0;
     }
 }

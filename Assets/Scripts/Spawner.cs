@@ -45,6 +45,7 @@ public class Spawner : MonoBehaviour {
     /// </summary>
     void DisplayNextSegment() {
         if (nextSegmentName != "") {
+            //Debug.Log(nextSegmentName);
             GameObject obj = PoolManager.current.GetPooledObject(nextSegmentName);
 
             if (obj != null) {
