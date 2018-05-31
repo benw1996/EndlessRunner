@@ -17,6 +17,8 @@ public class LevelComponent : MonoBehaviour {
     public bool isObstacle = false;
     public bool isCoin = false;
 
+    public AudioSource coinPickup;
+
     private Animator anim;
 
     private Helper helper = new Helper();
@@ -120,6 +122,7 @@ public class LevelComponent : MonoBehaviour {
 
     IEnumerator coinPickedUP() {
         anim.SetBool("pickedUp", true);
+        coinPickup.Play();
 
         yield return new WaitForSeconds(0.5f);
 

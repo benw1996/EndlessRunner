@@ -2883,6 +2883,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundCheck: {fileID: 968021560}
   startPosition: {fileID: 0}
+  m_rigidbody: {fileID: 0}
   m_jumpForce: 1000
   m_rotationSpeed: 100
   anim: {fileID: 0}
