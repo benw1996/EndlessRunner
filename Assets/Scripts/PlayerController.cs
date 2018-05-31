@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour {
 
     public Transform groundCheck;
     public Transform startPosition;
-    private Rigidbody2D m_rigidbody;
+    public Rigidbody2D m_rigidbody;
 
     public float m_jumpForce = 1000f;
     public float m_rotationSpeed = 100f;
@@ -37,7 +37,6 @@ public class PlayerController : MonoBehaviour {
             m_grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
 
             if (Input.GetButtonDown("Jump") && m_grounded) {
-                Debug.Log("I just jumped!!!!!!!");
 
                 m_jump = true;
 

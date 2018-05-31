@@ -17,11 +17,13 @@ public class LevelComponent : MonoBehaviour {
     public bool isObstacle = false;
     public bool isCoin = false;
 
+    private Animator anim;
+
     private Helper helper = new Helper();
 
 	// Use this for initialization
 	void Start () {
-
+        anim = GetComponent<Animator>();
 	}
 	
     void OnEnable() {
@@ -45,7 +47,7 @@ public class LevelComponent : MonoBehaviour {
     }
 
     void OnBecameInvisible() {
-        if (hasBeenUsed) {
+        if (hasBeenUsed || isCoin) {
             gameObject.SetActive(false);
             hasBeenUsed = false;
             //Debug.Log("Goodbye!");
@@ -106,12 +108,22 @@ public class LevelComponent : MonoBehaviour {
                 LevelController.current.Stop(!isObstacle);
             } else {
                 GameController.current.SendMessage("IncrementCoinsCollected");
-                gameObject.SetActive(false);
+
+                StartCoroutine("coinPickedUP");
             }
         }
     }
 
     public void HasBeenUsed() {
         hasBeenUsed = true;
+    }
+
+    IEnumerator coinPickedUP() {
+        anim.SetBool("pickedUp", true);
+
+        yield return new WaitForSeconds(0.5f);
+
+        anim.SetBool("pickedUp", false);
+        gameObject.SetActive(false);
     }
 }

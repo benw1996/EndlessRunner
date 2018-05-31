@@ -93,6 +93,7 @@ public class LevelController : MonoBehaviour {
 
             player.anim.SetBool("isPlaying", false);
             player.FreezeControls(true);
+
             GameOverDelegate();
         }
     }
@@ -173,5 +174,6 @@ public class LevelController : MonoBehaviour {
         m_speed = 5;
         UpdateVelocity();
         player.FreezeControls(false);
+        player.anim.SetBool("restart", false);
     }
 }
