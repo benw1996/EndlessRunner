@@ -28,6 +28,7 @@ public class JSONParser {
     public class Data {
         public float highscore;
         public int coinscollected;
+        public float[] settings;
     }
 
     public void ReadJson() {
@@ -73,5 +74,17 @@ public class JSONParser {
 
     public void ResetCoinsCollected() {
         playerData.coinscollected = 0;
+    }
+
+    public float[] GetSettings() {
+        return playerData.settings;
+    }
+
+    public void SetMusicVolume(float musicVolume) {
+        playerData.settings[0] = musicVolume;
+    }
+    
+    public void SetSoundsVolume(float soundsVolume) {
+        playerData.settings[1] = soundsVolume;
     }
 }

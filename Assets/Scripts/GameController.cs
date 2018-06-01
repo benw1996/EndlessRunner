@@ -51,6 +51,8 @@ public class GameController : MonoBehaviour {
     private bool playing = false;
     private bool paused = false;
 
+    private PlayerController player;
+
     void Awake() {
         current = this;
     }
@@ -61,11 +63,15 @@ public class GameController : MonoBehaviour {
         
         LevelController.GameOverDelegate += GameOver;
         LevelController.GameReadyToRestart += Restart;
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
 
         parser = JSONParser.Instance();
         highScore = parser.GetHighScore();
         totalCoinsCollected = parser.GetCoinsCollected();
         SetTotalCoinsCollectedText();
+
+        volumeSlider.value = parser.GetSettings()[0];
+        player.volumeSlider.value = parser.GetSettings()[1];
 
         SetHighscoreText();
     }
@@ -242,6 +248,14 @@ public class GameController : MonoBehaviour {
     /// </summary>
     public void VolumeController() {
         music.volume = volumeSlider.value;
+
+        parser.SetMusicVolume(music.volume);
+        parser.SaveJson();
+    }
+
+    public void SoundsVolumeChanged(float newVolume) {
+        parser.SetSoundsVolume(newVolume);
+        parser.SaveJson();
     }
 
     /// <summary>

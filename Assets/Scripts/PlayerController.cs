@@ -164,11 +164,16 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void SoundVolumeController() {
-        crashSound.volume = volumeSlider.value;
-        jumpSound.volume = volumeSlider.value;
-        landSound.volume = volumeSlider.value;
-        ridingSound.volume = volumeSlider.value;
-        coinPickup.volume = volumeSlider.value;
+        SetVolume(volumeSlider.value);
+        GameController.current.SoundsVolumeChanged(volumeSlider.value);
+    }
+
+    private void SetVolume(float newVolume) {
+        crashSound.volume = newVolume;
+        jumpSound.volume = newVolume;
+        landSound.volume = newVolume;
+        ridingSound.volume = newVolume;
+        coinPickup.volume = newVolume;
     }
 
     public void CoinPickedUp() {
