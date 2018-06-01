@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
 
@@ -20,6 +21,9 @@ public class PlayerController : MonoBehaviour {
     public AudioSource landSound;
     public AudioSource ridingSound;
     public AudioSource crashSound;
+    public AudioSource coinPickup;
+
+    public Slider volumeSlider;
 
     private enum HitDirection { None, Top, Bottom, Left, Right };
 
@@ -157,5 +161,17 @@ public class PlayerController : MonoBehaviour {
         anim.SetBool("restart", true);
         anim.SetBool("hasCrashed", false);
         anim.SetBool("isPlaying", true);
+    }
+
+    public void SoundVolumeController() {
+        crashSound.volume = volumeSlider.value;
+        jumpSound.volume = volumeSlider.value;
+        landSound.volume = volumeSlider.value;
+        ridingSound.volume = volumeSlider.value;
+        coinPickup.volume = volumeSlider.value;
+    }
+
+    public void CoinPickedUp() {
+        coinPickup.Play();
     }
 }

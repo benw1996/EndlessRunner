@@ -41,7 +41,7 @@ public class GameController : MonoBehaviour {
     public Button pauseButton;
     public GameObject startScreen;
     public Image settingsScreen;
-    public Slider vollumeSlider;
+    public Slider volumeSlider;
     public Image gameOverScreen;
     public Text newHighscoreText;
     public Text gameoverScoreText;
@@ -240,8 +240,8 @@ public class GameController : MonoBehaviour {
     /// <summary>
     /// Public method for controlling the audio via the slider in the settings.
     /// </summary>
-    public void VollumeController() {
-        music.volume = vollumeSlider.value;
+    public void VolumeController() {
+        music.volume = volumeSlider.value;
     }
 
     /// <summary>

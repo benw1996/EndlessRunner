@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelComponent : MonoBehaviour {
 
@@ -16,8 +17,6 @@ public class LevelComponent : MonoBehaviour {
 
     public bool isObstacle = false;
     public bool isCoin = false;
-
-    public AudioSource coinPickup;
 
     private Animator anim;
 
@@ -110,6 +109,7 @@ public class LevelComponent : MonoBehaviour {
                 LevelController.current.Stop(!isObstacle);
             } else {
                 GameController.current.SendMessage("IncrementCoinsCollected");
+                col.GetComponent<PlayerController>().SendMessage("CoinPickedUp");
 
                 StartCoroutine("coinPickedUP");
             }
@@ -122,7 +122,6 @@ public class LevelComponent : MonoBehaviour {
 
     IEnumerator coinPickedUP() {
         anim.SetBool("pickedUp", true);
-        coinPickup.Play();
 
         yield return new WaitForSeconds(0.5f);
 
