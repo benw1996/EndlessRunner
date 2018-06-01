@@ -20,7 +20,8 @@ public class BGScroller : MonoBehaviour {
         GameController.PauseDelegate += StopScrolling;
         GameController.UnPauseDelegate += StartScrolling;
         LevelController.GameOverDelegate += StopScrolling;
-	}
+        LevelController.GameReadyToRestart += StartScrolling;
+    }
 	
 	// Update is called once per frame
 	void Update () {

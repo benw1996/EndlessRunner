@@ -7,6 +7,7 @@ public class JSONParser {
 
     public static JSONParser parser;
 
+    //The file path for the JSON file.
     private string filePath = Application.dataPath + "/Resources/playerdata.json";
 
     protected JSONParser() {
@@ -33,7 +34,7 @@ public class JSONParser {
 
     public void ReadJson() {
         //Debug.Log(filePath);
-
+        //Checks to see if the JSON file exists, and if so then the file is read in and the player data object is populated.
         if (File.Exists(filePath)) {
             string data = File.ReadAllText(filePath);
             playerData = new Data();
@@ -45,6 +46,7 @@ public class JSONParser {
     }
 
     public void SaveJson() {
+        //Checks to see if the JSON file exists, and if so then the file is saved to overriding the current data held.
         if (File.Exists(filePath)) {
             string data = JsonUtility.ToJson(playerData);
 
@@ -56,34 +58,42 @@ public class JSONParser {
         }
     }
 
+    //Public getter for the players high score.
     public float GetHighScore() {
         return playerData.highscore;
     }
 
+    //Public setter for the high score.
     public void SetHighScore(float score) {
         playerData.highscore = score;
     }
 
+    //Public getter for the total coins collected.
     public int GetCoinsCollected() {
         return playerData.coinscollected; 
     }
 
+    //Public method for adding coins to the total collected.
     public void AddCoinsCollected(int coins) {
         playerData.coinscollected += coins;
     }
 
+    //public method for reseting the coins collected.
     public void ResetCoinsCollected() {
         playerData.coinscollected = 0;
     }
 
+    //Public getter for the players settings.
     public float[] GetSettings() {
         return playerData.settings;
     }
 
+    //Public setter for the music volume.
     public void SetMusicVolume(float musicVolume) {
         playerData.settings[0] = musicVolume;
     }
     
+    //Public setter for the sounds volume.
     public void SetSoundsVolume(float soundsVolume) {
         playerData.settings[1] = soundsVolume;
     }

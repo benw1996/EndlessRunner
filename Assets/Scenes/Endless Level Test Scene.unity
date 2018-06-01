@@ -2651,6 +2651,7 @@ MonoBehaviour:
   m_start: {fileID: 462270341}
   startPosition: {fileID: 1550592327}
   resetTimer: {fileID: 1024570679}
+  playerMat: {fileID: 6200000, guid: f21aa3fc87b0883459b50d43d5d7fe8b, type: 2}
 --- !u!1 &1024570677
 GameObject:
   m_ObjectHideFlags: 0
@@ -2791,7 +2792,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 0, g: 0, b: 0, a: 1}
     m_HighlightedColor: {r: 0, g: 0, b: 0, a: 1}
-    m_PressedColor: {r: 0, g: 0, b: 0, a: 1}
+    m_PressedColor: {r: 0.33088237, g: 0.33088237, b: 0.33088237, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1

@@ -118,9 +118,11 @@ public class GameController : MonoBehaviour {
 
         if (score > highScore) {
             parser.SetHighScore(score);
+            highScore = score;
 
             newHighscoreText.gameObject.SetActive(true);
         }
+        SetHighscoreText();
 
         parser.SaveJson();
     }
@@ -235,12 +237,14 @@ public class GameController : MonoBehaviour {
         //Highscore is reset to 0 and put to 0 in the JSON file.
         highScore = 0;
         parser.SetHighScore(highScore);
-        coinsCollected = 0;
+        totalCoinsCollected = 0;
         parser.ResetCoinsCollected();
         //The new high score is saved to the file.
         parser.SaveJson();
         //The new highscore is displayed.
         SetHighscoreText();
+        //The new coins collected is displayed.
+        SetTotalCoinsCollectedText();
     }
 
     /// <summary>

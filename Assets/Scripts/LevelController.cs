@@ -32,6 +32,7 @@ public class LevelController : MonoBehaviour {
     public Text resetTimer;
 
     private PlayerController player;
+    public PhysicsMaterial2D playerMat;
 
     void Awake() {
         current = this;
@@ -157,6 +158,8 @@ public class LevelController : MonoBehaviour {
     }
 
     IEnumerator Restart() {
+        playerMat.bounciness = 0;
+
         resetTimer.text = "3";
         resetTimer.gameObject.SetActive(true);
 
@@ -168,6 +171,8 @@ public class LevelController : MonoBehaviour {
 
         yield return new WaitForSeconds(1);
         resetTimer.gameObject.SetActive(false);
+
+        playerMat.bounciness = 0.1f;
 
         GameReadyToRestart();
 
