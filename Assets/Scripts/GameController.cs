@@ -41,6 +41,7 @@ public class GameController : MonoBehaviour {
     public Button pauseButton;
     public GameObject startScreen;
     public Image settingsScreen;
+    public Button settingsBackButton;
     public Slider volumeSlider;
     public Image gameOverScreen;
     public Text newHighscoreText;
@@ -213,6 +214,7 @@ public class GameController : MonoBehaviour {
     public void ShowSettings() {
         HideStartScreen();
         DisplaySettings();
+        settingsBackButton.gameObject.SetActive(true);
         settingsScreen.transform.position = new Vector3(593.5f, 354f, 0);
     }
 
@@ -231,6 +233,7 @@ public class GameController : MonoBehaviour {
             DisplayPauseScreen();
             HideGameUI();
             DisplaySettings();
+            settingsBackButton.gameObject.SetActive(false);
             //Settings screen displayed beside the paused menu
             settingsScreen.transform.position = new Vector3(774.5f, 354, 0);
             //Pause delegate is called

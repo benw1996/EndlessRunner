@@ -5,6 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Endless Level Test Scene.unity
     guid: de3b7d7fbf8c1914daf11c804171e0b4
+  - enabled: 1
+    path: Assets/Scenes/MainGame.unity
+    guid: ae27e603fe2ba634aadae6718f6b7684

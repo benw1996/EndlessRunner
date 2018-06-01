@@ -36,8 +36,11 @@ public class JSONParser {
         //Debug.Log(filePath);
         //Checks to see if the JSON file exists, and if so then the file is read in and the player data object is populated.
         if (File.Exists(filePath)) {
-            string data = File.ReadAllText(filePath);
+            //string data = File.ReadAllText(filePath);
             playerData = new Data();
+
+            TextAsset fileText = (TextAsset)Resources.Load("playerdata", typeof(TextAsset));
+            string data = fileText.text;
 
             playerData = JsonUtility.FromJson<Data>(data);
         } else {
