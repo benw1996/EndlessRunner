@@ -31,6 +31,10 @@ public class Spawner : MonoBehaviour {
         //Debug.Log("hello");
     }
 
+    /// <summary>
+    /// When the player enters the trigger the next spawn point is chosen, the next segement is chosen and then it is displayed.
+    /// </summary>
+    /// <param name="col"></param>
     void OnTriggerEnter2D(Collider2D col) {
         if (col.tag == "Player" && !hasSpawnedObject) {
             spawnPoint = ChooseNextSpawnPoint();
@@ -45,7 +49,7 @@ public class Spawner : MonoBehaviour {
     /// </summary>
     void DisplayNextSegment() {
         if (nextSegmentName != "") {
-            //Debug.Log(nextSegmentName);
+            //The next component is grabbed from the pool manager.
             GameObject obj = PoolManager.current.GetPooledObject(nextSegmentName);
 
             if (obj != null) {
@@ -60,6 +64,12 @@ public class Spawner : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// The next segment is chosen using this method.
+    /// If there is not a given list of next segements to choose from then the next segment is chosen depending on the spawn point chosen.
+    /// The list of names is chosen from and then is shuffled to ensure the same component is not always chosen.
+    /// </summary>
+    /// <returns></returns>
     string ChooseNextSegment() {
         if (nextSegments.Count > 0) {
             int limit = nextSegments.Count;
@@ -86,6 +96,11 @@ public class Spawner : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// The next spawn point is chosen at random from the given list of spawn points.
+    /// Then depending on the spawn point chosen the index is set which detemines which component is chosen.
+    /// </summary>
+    /// <returns></returns>
     Transform ChooseNextSpawnPoint() {
         if (spawnPoints.Count != 1) {
             int limit = spawnPoints.Count;
@@ -110,6 +125,7 @@ public class Spawner : MonoBehaviour {
         }
     }
 
+    //Public method for shuffling the spawn points to ensure the same spawn point doesnt keep getting chosen.
     public void ShuffleSpawnPoints(int index) {
         Transform tempSpawnPoint = spawnPoints[index];
 

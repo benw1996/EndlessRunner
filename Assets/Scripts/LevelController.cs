@@ -73,17 +73,27 @@ public class LevelController : MonoBehaviour {
         player.anim.SetBool("restart", false);
     }
 
+    /// <summary>
+    /// Public method for going through all the level components and updating their velocity.
+    /// </summary>
     public void UpdateVelocity() {
         for(int i = 0; i < levelComponents.Count; i++) {
             levelComponents[i].GetComponent<LevelComponent>().UpdateVelocity(m_Velocity, m_speed);
         }
 
+        //The starting comopnent is not contained in the pool manager so it needs to be updated 
         m_start.GetComponent<LevelComponent>().m_speed = m_speed;
         m_start.GetComponent<LevelComponent>().ForceUpdate();
     }
 
+    /// <summary>
+    /// Public method that is called when the level components need to be stopped.
+    /// If they are being stopped due to the game being over then the game over delegate is called.
+    /// </summary>
+    /// <param name="fall">This boolean is used to tell the method if the user fell off the map or not.</param>
     public void Stop(bool fall) {
         if (!gameOver) {
+            //If the user fell then the level is slowly stopped if not then it is stopped instantly.
             if (fall) {
                 acceleration = -3;
                 m_stop = true;
@@ -99,16 +109,19 @@ public class LevelController : MonoBehaviour {
         }
     }
 
+    //Method that is called by the pause event, the level components are given a new speed of 0 to stop them.
     public void Pause() {
         m_speed = 0f;
         UpdateVelocity();
     }
 
+    //Method that is called by the pause event, the level components are given a new speed of 5 to start them moving again.
     public void UnPause() {
         m_speed = 5f;
         UpdateVelocity();
     }
-
+    
+    //Unused method that was to be used to calculate the angle of the level component to determine what way it should move.
     private float CalculateAngle(Transform pos1, Transform pos2) {
         float angle = 0f;
 
@@ -120,6 +133,7 @@ public class LevelController : MonoBehaviour {
         return angle;
     }
 
+    //Unused method that was to be used to calculate the new veloctiy given the calculated angle.
     private Vector2 CalculateVelocity(float angle) {
         Vector2 velocity = new Vector2 {
             x = Mathf.Cos(angle),
@@ -129,12 +143,18 @@ public class LevelController : MonoBehaviour {
         return velocity;
     }
 
+    //Method for disabling all the level components.
     private void DisableAllLevelComponents() {
         for (int i = 0; i < levelComponents.Count; i++) {
             levelComponents[i].SetActive(false);
         }
     }
 
+    /// <summary>
+    /// Method that is called when the level needs to be reset, this is called on its own when the Home button is pressed.
+    /// This method sets the speed to 0 then disables the level components and renables the starting component
+    /// The relevant booleans are set to false and the players character controls are frozen and the reset event is called.
+    /// </summary>
     private void ResetLevel() {
         m_speed = 0f;
         UpdateVelocity();
@@ -151,12 +171,20 @@ public class LevelController : MonoBehaviour {
         ResetDelegate();
     }
 
+    /// <summary>
+    /// This method is called when the restart button is pressed.
+    /// The level is reset using the above method then the game is restarted using the coroutine.
+    /// </summary>
     private void RestartGame() {
         ResetLevel();
 
         StartCoroutine(Restart());
     }
 
+    /// <summary>
+    /// This coroutine gives the user a countdown of 3 seconds before the level starts moving again.
+    /// </summary>
+    /// <returns></returns>
     IEnumerator Restart() {
         playerMat.bounciness = 0;
 

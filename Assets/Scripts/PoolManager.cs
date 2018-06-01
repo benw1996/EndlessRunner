@@ -27,7 +27,7 @@ public class PoolManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         tempList = new List<GameObject>();
-
+        //When the game starts the object pool is populated, each of the objects set out in the pool manager are instantiated and added to the pool
         for (int i = 0; i < names.Length; i++) {
             List<GameObject> objList = new List<GameObject>();
 
@@ -49,6 +49,7 @@ public class PoolManager : MonoBehaviour {
         obstacleNames = helper.FilterArray(tempNames, "obstacle", 0);
 	}
 	
+    //Public method for getting a pooled object given the name of the object.
 	public GameObject GetPooledObject(string name) {
         if (mainPool.ContainsKey(name)) {
             tempList = mainPool[name] as List<GameObject>;
@@ -65,6 +66,7 @@ public class PoolManager : MonoBehaviour {
         return null;
     }
 
+    //Public method for getting all the objects of a given name.
     public List<GameObject> GetPooledObjects(string tag) {
         tempList = new List<GameObject>();
 
@@ -79,6 +81,7 @@ public class PoolManager : MonoBehaviour {
         return tempList;
     }
 
+    //The list of different level components are populated using this method.
     public void PopulateListsofLevelComponents() {
         List<string> tempNames = new List<string>();
         tempNames.AddRange(names);
@@ -93,6 +96,7 @@ public class PoolManager : MonoBehaviour {
         return levelComponentNames; 
     }
 
+    //Public method for getting the list of obstacle names.
     public List<string> GetObstacleNames() {
         return obstacleNames;
     }
@@ -102,7 +106,8 @@ public class PoolManager : MonoBehaviour {
         levelComponentNames[index].Remove(item);
         levelComponentNames[index].Add(item);
     }
-
+    
+    //Public method for reseting the pool back to inactive ready to be used again.
     public void ResetPool() {
         for(int i = 0; i < names.Length; i++) {
             tempList = mainPool[ names[i] ] as List<GameObject>;

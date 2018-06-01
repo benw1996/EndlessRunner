@@ -59,26 +59,29 @@ public class GameController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        //The score text is set to the score.
         SetScoreText();
         
         LevelController.GameOverDelegate += GameOver;
         LevelController.GameReadyToRestart += Restart;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
 
+        //The JSON parser is created and the json file is read and the UI is updated with the values read from the JSON file
         parser = JSONParser.Instance();
         highScore = parser.GetHighScore();
         totalCoinsCollected = parser.GetCoinsCollected();
         SetTotalCoinsCollectedText();
-
+        //The settings read from the JSON file are given to the sliders in the settings to update the volumes.
         volumeSlider.value = parser.GetSettings()[0];
         player.volumeSlider.value = parser.GetSettings()[1];
-
+        //The high score text is set to the high score.
         SetHighscoreText();
     }
 	
 	// Update is called once per frame
 	void Update () {
         if (Input.GetKeyDown("return") ){
+            //The playing boolean is set to true, the relevant UI is displayed and the start event is called.
             playing = true;
 
             DisplayGameUI();
@@ -88,17 +91,25 @@ public class GameController : MonoBehaviour {
         }
 
         if (Input.GetKeyDown("p") && playing) {
+            //The pause event is called.
             PauseButtonPressed();
         }
 	}
 
     void FixedUpdate() {
         if (playing && !paused) {
+            //At fixed intervals if the game is being played then the score is incremented.
             score += (Time.deltaTime * scoreMultiplyer);
             SetScoreText();
         }
     }
-
+    /// <summary>
+    /// Method called when the game is over.
+    /// The in game UI is hidden and the game over screen is displayed.
+    /// The relevant UI is updated with new values.
+    /// The JSON is updated with the new coins collected and the new high score if it has been achieved.
+    /// The JSON file is then saved.
+    /// </summary>
     void GameOver() {
         playing = false;
 
@@ -127,15 +138,19 @@ public class GameController : MonoBehaviour {
         parser.SaveJson();
     }
 
+    //Public method for updating the game state.
     public void UpdateGameState(bool newState) {
         playing = newState;
     }
 
+    //Public method for incrementing the coins collected.
     public void IncrementCoinsCollected() {
         coinsCollected++;
+        //The coins collected counter is updated.
         coinCounterText.text = coinsCollected.ToString("00000000");
     }
 
+    //The total coins collected counter is updated using this method.
     void SetTotalCoinsCollectedText() {
         totalCoinsText.text = totalCoinsCollected.ToString("00000000");
     }
@@ -145,7 +160,7 @@ public class GameController : MonoBehaviour {
     /// </summary>
     void SetScoreText() {
         string tempScore = NormaliseScore(score);
-
+        //If the score is longer than the current number of digits then the text box is moved along to fit the new digit on screen.
         if ((int)Mathf.Floor(Mathf.Log10(score)) >= scoreDisplay.Length) {
             //The text box is then moved along to fit the extra digit in.
             Transform transform = scoreText.transform;
@@ -194,12 +209,14 @@ public class GameController : MonoBehaviour {
         return tempString;
     }
 
+    //The public method for displaying the settings screen in the middle of the screen.
     public void ShowSettings() {
         HideStartScreen();
         DisplaySettings();
         settingsScreen.transform.position = new Vector3(593.5f, 354f, 0);
     }
 
+    //The public method for hiding the settings and displaying the home screen.
     public void SettingsBackButtonPressed() {
         DisplayStartScreen();
         HideSettings();
@@ -231,7 +248,7 @@ public class GameController : MonoBehaviour {
     }
 
     /// <summary>
-    /// Simple function that resets the high score to 0 then saves the high score to the json file.
+    /// Simple function that resets the high score and coins collected to 0 then saves the json file.
     /// </summary>
     public void ResetStatistics() {
         //Highscore is reset to 0 and put to 0 in the JSON file.
@@ -248,7 +265,7 @@ public class GameController : MonoBehaviour {
     }
 
     /// <summary>
-    /// Public method for controlling the audio via the slider in the settings.
+    /// Public method for controlling the music via the slider in the settings.
     /// </summary>
     public void VolumeController() {
         music.volume = volumeSlider.value;
@@ -257,6 +274,9 @@ public class GameController : MonoBehaviour {
         parser.SaveJson();
     }
 
+    /// <summary>
+    /// Public method for controlling the sounds via the slider in the settings.
+    /// </summary>
     public void SoundsVolumeChanged(float newVolume) {
         parser.SetSoundsVolume(newVolume);
         parser.SaveJson();
@@ -294,6 +314,7 @@ public class GameController : MonoBehaviour {
         HideSettings();
     }
 
+    //Public method for restarting the game.
     public void Restart() {
         DisplayGameUI();
         playing = true;

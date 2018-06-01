@@ -10,6 +10,7 @@ public class SetCoM : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        //This sets the center of mass of a the rigid body attached to the game object to the given location.
         m_rigidbody = GetComponent<Rigidbody2D>();
         m_com = com.position;
 

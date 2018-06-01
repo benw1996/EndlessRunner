@@ -27,6 +27,7 @@ public class LevelComponent : MonoBehaviour {
         anim = GetComponent<Animator>();
 	}
 	
+    //On enable the components rigidboy is grabbed and given the velocity, and coins and obstacles are spawned.
     void OnEnable() {
         m_rigidBody = GetComponent<Rigidbody2D>();
         m_rigidBody.velocity = m_velocity * m_speed;
@@ -39,6 +40,7 @@ public class LevelComponent : MonoBehaviour {
 
     }
 
+    //Public method for forcing an update of the velocity.
     public void ForceUpdate() {
         m_rigidBody.velocity = m_velocity * m_speed;
     }
@@ -47,6 +49,7 @@ public class LevelComponent : MonoBehaviour {
         //hasBeenSeen = true;
     }
 
+    //When the component becoms invisible and it has been used it is set to inactive to be used again.
     void OnBecameInvisible() {
         if (hasBeenUsed || isCoin) {
             gameObject.SetActive(false);
@@ -60,6 +63,7 @@ public class LevelComponent : MonoBehaviour {
         
 	}
 
+    //Public method for updating the velocity given a new velocity and speed.
     public void UpdateVelocity(Vector2 newVelocity, float newSpeed) {
         m_velocity = newVelocity;
         m_speed = newSpeed;
@@ -67,6 +71,7 @@ public class LevelComponent : MonoBehaviour {
         m_rigidBody.velocity = m_velocity * m_speed;
     }
 
+    //Method for spawning obstacles, if the list of obstacle spawn points is not empty then a spawn point is chosen and an obstacle is placed at it.
     private void SpawnObstacles() {
         if(m_obstacleSpawnPoints.Length != 0) {
             //Debug.Log(PoolManager.current.GetObstacleNames().ToArray().Length);
@@ -88,6 +93,7 @@ public class LevelComponent : MonoBehaviour {
         }
     }
 
+    //Method for spawning a coin, if the list of coin spawn points is not empty then a spawn point is chosen and a coin is placed at it.
     private void SpawnCoin() {
         if(m_coinSpawnPoints.Length != 0) {
             GameObject obj = PoolManager.current.GetPooledObject("Level/Coin");
@@ -103,11 +109,15 @@ public class LevelComponent : MonoBehaviour {
         }
     }
 
+    //If another object enters the trigger attached to this component then this method is called.
     private void OnTriggerEnter2D(Collider2D col) {
+        //First it is checked that it is the player entering the trigger
         if(col.tag == "Player") {
+            //If this component is not a coin then the gameover method is called.
             if (!isCoin) {
                 LevelController.current.Stop(!isObstacle);
             } else {
+                //If it is a coin then the coin counter is incremented and the sound is played along with the co routine for the animation is called.
                 GameController.current.SendMessage("IncrementCoinsCollected");
                 col.GetComponent<PlayerController>().SendMessage("CoinPickedUp");
 
@@ -116,13 +126,15 @@ public class LevelComponent : MonoBehaviour {
         }
     }
 
+    //Public method for telling the component it has been used.
     public void HasBeenUsed() {
         hasBeenUsed = true;
     }
 
     IEnumerator coinPickedUP() {
+        //The animation is started.
         anim.SetBool("pickedUp", true);
-
+        //It then waits for the animation to play and then disables the coin ready for it to be used again.
         yield return new WaitForSeconds(0.5f);
 
         anim.SetBool("pickedUp", false);
