@@ -82,13 +82,7 @@ public class GameController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (Input.GetKeyDown("return") ){
-            //The playing boolean is set to true, the relevant UI is displayed and the start event is called.
-            playing = true;
-
-            DisplayGameUI();
-            HideStartScreen();
-
-            StartDelegate();
+            StartButtonPress();
         }
 
         if (Input.GetKeyDown("p") && playing) {
@@ -137,6 +131,16 @@ public class GameController : MonoBehaviour {
         SetHighscoreText();
 
         parser.SaveJson();
+    }
+
+    //The playing boolean is set to true, the relevant UI is displayed and the start event is called.
+    public void StartButtonPress() {
+        playing = true;
+
+        DisplayGameUI();
+        HideStartScreen();
+
+        StartDelegate();
     }
 
     //Public method for updating the game state.
